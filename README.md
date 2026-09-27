@@ -1,5 +1,9 @@
 # Social Democracy: An Alternate History
 
+## About this fork
+
+This is a fork of [Social Democracy: An Alternate History](https://github.com/aucchen/social_democracy_alternate_history), an interactive-fiction game by Autumn Chen. The original game and its code are released under the MIT License; see [LICENSE](LICENSE).
+
 ## Included Libraries
 
 [jquery v1.11.1](https://releases.jquery.com/)
