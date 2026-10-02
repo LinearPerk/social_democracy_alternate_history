@@ -4,7 +4,7 @@
 
 map.jpg, map_2.jpg: Anonymous. Meyers Blitz-Lexikon. English:  scanned by User:LA2 in September 2005, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:LA2-Blitz-0083.jpg. Accessed 3 Feb. 2024. Public Domain
 
-reichstag_2.jpg: ---. Berlin, Reichstag, Verfassungsfeier. 11 Aug. 1932. German Federal Archives, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-13744,_Berlin,_Reichstag,_Verfassungsfeier.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
+reichstag_2.jpg: ---. Berlin, Reichstag, Verfassungsfeier. 11 Aug. 1926. German Federal Archives, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-13744,_Berlin,_Reichstag,_Verfassungsfeier.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
 
 reichstag_3.jpg: ---. Berlin, Sitzung Des Reichstages. 12 Sept. 1932. German Federal Archives, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-13850,_Berlin,_Sitzung_des_Reichstages.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
 
@@ -14,7 +14,7 @@ arbeiterbew.jpg: ---. Deutsch:  Köpfe Der Frühen Deutschen Arbeiterbewegung: U
 
 iron_front_rally.jpg: Berlin, Aufmarsch Der “Eisernen Front.” 3 Mar. 1932. German Federal Archives, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-13201A,_Berlin,_Aufmarsch_der_%22Eisernen_Front%22.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
 
-blutmai_2.jpg: Berlin, Blutmai, Straßenbarrikade. 5 May 1929. German Federal Archives, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Bundesarchiv_B_145_Bild-P046278,_Berlin,_Blutmai,_Stra%C3%9Fenbarrikade.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
+blutmai_2.jpg: Weinrother, Carl. Berlin, Blutmai, Straßenbarrikade. 5 May 1929. German Federal Archives, Bild B 145 P046278, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Bundesarchiv_B_145_Bild-P046278,_Berlin,_Blutmai,_Stra%C3%9Fenbarrikade.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
 
 reichsbanner.jpg: Berlin, Kundgebung Des Reichsbanners Im Lustgarten. 3 Mar. 1928. German Federal Archives, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-05611,_Berlin,_Kundgebung_des_Reichsbanners_im_Lustgarten.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
 
@@ -22,7 +22,7 @@ stahlhelm.jpg: Berlin, Lustgarten, Stahlhelmaufmarsch. 3 Mar. 1931. German Feder
 
 danat_bank.jpg: Ceccaldi, Julie. English:  Darmstädter Und Nationalbank KGaA (DANAT-Bank) Stock Certificate for 100 Reichsmark, Issued in October 1928 in Berlin. 4 Apr. 2023. „Sammlung Commodore“, Rüdiger K. Weng, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Darmstaedter_und_Nationalbank_1928.jpg.
 
-mann_der_arbeit.jpg: credited, Poet: Georg Herwegh, artist not. Mann Der Arbeit, Aufgewacht! Und Erkenne Deine Macht! Alle Räder Stehen Still, Wenn Dein Starker Arm Es Will, Postkarte. Druck Und Verlag: Rauh Und Pohle, Leipzig. circa 1910date QS:P,+ - -00T00:00:00Z/9,P1480,Q5727902 1910. ebay, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Mann_der_Arbeit,_aufgewacht!_Postkarte,_c._1910.jpg. Public Domain
+Mann_der_Arbeit.jpg: credited, Poet: Georg Herwegh, artist not. Mann Der Arbeit, Aufgewacht! Und Erkenne Deine Macht! Alle Räder Stehen Still, Wenn Dein Starker Arm Es Will, Postkarte. Druck Und Verlag: Rauh Und Pohle, Leipzig. circa 1910date QS:P,+ - -00T00:00:00Z/9,P1480,Q5727902 1910. ebay, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Mann_der_Arbeit,_aufgewacht!_Postkarte,_c._1910.jpg. Public Domain
 
 zentrum.png: “File:Logo of the German Centre Party.Svg.” Wikipedia, 9 Dec. 2023. Wikipedia, https://en.wikipedia.org/w/index.php?title=File:Logo_of_the_German_Centre_Party.svg&oldid=1189025539. Public Domain
 
@@ -38,7 +38,7 @@ workers.jpg: Marcus, Otto. Français :  "Prolétaires de Tous Les Pays, Unissez
 
 reichsbanner_flag.jpg: Michel, Der. Flagge Des Reichsbanners Schwarz-Rot-Gold, Bund Aktiver Demokraten. 15 June 2013. Own work, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Flagge_Reichsbanner_2013.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/deed.en
 
-bankrun.jpg: Berlin, Bankenkrach, Andrang Bei Der Sparkasse. 13 July 1931. German Federal Archives, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-12023,_Berlin,_Bankenkrach,_Andrang_bei_der_Sparkasse.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
+bankrun.jpg: Pahl, Georg. Berlin, Bankenkrach, Andrang Bei Der Sparkasse. 13 July 1931. German Federal Archives, Bild 102-12023, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-12023,_Berlin,_Bankenkrach,_Andrang_bei_der_Sparkasse.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
 
 spd_logo.jpg: Nicklaarakkers. Deutsch:  Selbst Gemacht Logo Der SPD in Den 1930er Jahren. 15 June 2008. Own work, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Sozialdemokratische_Partei_Deutschlands,_Logo_um_1930.jpg. Public Domain
 
@@ -60,7 +60,7 @@ kpd.jpg: Weinrother, Carl. Berlin, Liebknecht-Haus Am Bülowplatz. 1932date QS:P
 
 union_2.jpg: Werbekarte Des Deutschen Holzarbeiterverbands. 1900. Self-scanned, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Deutscher_Holzarbeiter_Verband_Werbekarte_um_1900.jpg. Public Domain
 
-rfkb_logo.png: РОСТа“, Пётр Лидов, Telegram-канал „Окна. Русский:  Членские Знаки Союза Красных Фронтовиков Делятся На Два Типа: 31 Jan. 2023. https://t.me/okna_rosta, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Bundesabzeichen_1924-1926.png. Public Domain
+rfkb_logo.png: РОСТа“, Пётр Лидов, Telegram-канал „Окна. Русский:  Членские Знаки Союза Красных Фронтовиков Делятся На Два Типа: 31 Jan. 2023. https://t.me/okna_rosta, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Bundesabzeichen_1924-1926.png. CC0 https://creativecommons.org/publicdomain/zero/1.0/
 
 redfront.jpg: author, Unknown authorUnknown. Berlin, Pfingstreffen Der Rot-Front-Kämpfer. 5 May 1928. German Federal Archives, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-05977,_Berlin,_Pfingstreffen_der_Rot-Front-K%C3%A4mpfer.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
 
@@ -126,7 +126,7 @@ BreitscheidRudolf.jpg: “BreitscheidRudolf.jpg.” Wikipedia, 28 Mar. 2013. Wik
 
 KautskyKarl.jpg: Collection, George Grantham Bain. English:  German Marxist Karl Kautsky (1884-1938). Unrecorded. This image  is available from the United States Library of Congress’s Prints and Photographs division under the digital ID ggbain.30969., Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Karl_Kautsky_01.jpg. Public Domain
 
-LeberJulius.jpg: “Datei:LeberJulius.jpg.” Wikipedia, 7 Jan. 2024. Wikipedia, https://de.wikipedia.org/w/index.php?title=Datei:LeberJulius.jpg&oldid=240958104. Public Domain
+LeberJulius.jpg: Unknown author. Julius Leber. 1924. Büro des Reichstags (Hg.): Reichstags-Handbuch 1924, II. Wahlperiode, Berlin 1924. Wikimedia Commons, https://commons.wikimedia.org/wiki/File:LeberJulius.jpg. Public Domain
 
 MierendorffCarlo.jpg: “Datei:MierendorffCarlo.jpg.” Wikipedia, 24 Feb. 2010. Wikipedia, https://de.wikipedia.org/w/index.php?title=Datei:MierendorffCarlo.jpg&oldid=71088897. Public Domain
 
@@ -165,3 +165,53 @@ StegerwaldAdam.jpg: Verlag, Herder. Deutsch:  Adam Stegerwald, Preußischer Mini
 LeipartTheodor.jpg: Portrait Theodor Leipart 1926. Die Arbeit (1924 - 1933)- Zeitschrift Für Gewerkschaftspolitik Und Wirtschaftskunde : Online-Edition Der Bibliothek Der Friedrich-Ebert-Stiftung. https://library.fes.de/arbeit/bild-leipart2.html. Accessed 6 Apr. 2024. Public Domain
 
 WoytinskyWladimir.jpg: author, Unknown authorUnknown. Español:  Socialistas En Irkutsk, En El Exilio Interior. Entre Ellos, de Izquierda a Derecha: Fiódor Dan, Irakli Tsereteli, Voitinski y Abraham Gots, 1914-1915. Scanned from ISBN 069105567X   Ziva Galili: The Menshevik Leaders in the Russian Revolution: Social Realities and Political Strategies Princeton, N.J. : Princeton University Press, 1989, after page 142. Galili’s source is en:Hoover Institution., Wikimedia Commons, https://commons.wikimedia.org/wiki/File:SocialistasEnIrkutskDanTsereteliVoitinskiDan19141915.png. Public Domain
+
+All_Quiet.jpg: Poster for the 1930 Film All Quiet on the Western Front. 1930. https://commons.wikimedia.org/wiki/File:All_Quiet_on_the_Western_Front_(1930_film)_poster.jpg. Public Domain
+
+Dollfuss.jpg: Kanzler in Kaiserjäger-Uniform Als Redner Bei Einer Veranstaltung Der Vaterländischen Front Auf Dem Wiener Trabrennplatz. September 11, 1933. http://data.onb.ac.at/rec/baa14694595. https://commons.wikimedia.org/wiki/File:DollfussEnActoDelFrentePatri%C3%B3tico19330911_ONB14694595.jpg. Public Domain
+
+Hindenburg_head.jpg: https://beeldbank.spaarnestadphoto.com/search.pp?flush=1&multikeyword=SFA022001424&searchtype=0#ctr-thumbnails. https://commons.wikimedia.org/wiki/File:In_1925_wordt_Paul_von_Hindenburg_gekozen_tot_Rijkspresident_als_opvolger_van_Friedrich_Ebert,_SFA022001424.jpg. Public Domain
+
+Kollwitz_Arbeitslosigkeit.jpg: Kollwitz, Käthe. Arbeitslosigkeit (Unemployment). Lithograph. 1909. https://artimbarc.com/platform-content/ikon. https://commons.wikimedia.org/wiki/File:Arbeitslosigkeit_-_K%C3%A4the_Kollwitz.png. Public Domain
+
+Kollwitz_Hospital.jpg: Kollwitz, Käthe. Käthe Kollwitz - Besuch in Krankenhaus. 1929. http://resource.nlm.nih.gov/101447881. https://commons.wikimedia.org/wiki/File:K%C3%A4the_Kollwitz_-_Besuch_in_Krankenhaus.tif. Public Domain
+
+Kollwitz_Weavers.jpg: Kollwitz, Käthe. The March of the Weavers in Berlin - Käthe Kollwitz - 1897. 1897. https://www.wikiart.org/en/kathe-kollwitz/the-march-of-the-weavers-in-berlin-1897. https://commons.wikimedia.org/wiki/File:The_March_of_the_Weavers_in_Berlin_-_K%C3%A4the_Kollwitz_-_1897.jpg. Public Domain
+
+Reichstagsfraktion_der_SPD.jpg: 75CT. Deutsch: Reichstagsfraktion der SPD. 1914. Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Reichstagsfraktion_der_SPD.jpg. CC-BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/deed.en
+
+Reichswehr.jpg: Reichswehrposten Vor Dem Reichswehrministerium. July 7, 1932. German Federal Archives. https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-13678,_Reichswehrposten_vor_dem_Reichswehrministerium.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
+
+Rothe_Wahlen_1903.jpg: Rothe Wahlen, Illustrierte Festzeitung für 1903. https://commons.wikimedia.org/wiki/File:Rothe_Wahlen_1903.jpg. Public Domain
+
+schutzbund.png: Dahn. Emblem of Republikanischer Schutzbund, the Paramilitary Arm of the Austrian Social Democratic Party during the Interwar First-Republic Era. Based on Lapel Photograph by Deutschen Digitalen Bibliothek. May 8, 2018. Own work. https://commons.wikimedia.org/wiki/File:Republikanischer_Schutzbund_emblem.svg. CC-BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/deed.en
+
+weltbune.jpg: ---. Cover of "Die Weltbühne", German journal. 12 Mar. 1929. Wikimedia Commons, https://commons.wikimedia.org/wiki/File:WBUmschlag12_03_1929.jpg. Public Domain
+
+BrüningHeinrich.jpg: ---. Heinrich Brüning. circa 1930. German Federal Archives, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-1989-0630-504,_Heinrich_Br%C3%BCning.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
+
+EinsteinAlbert.jpg: Albert Einstein. 1925. German Federal Archives. https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-19000-1918,_Albert_Einstein.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
+
+HirschfeldMagnus.jpg: Reiss, Max. Image of German Physician and Sexologist Magnus Hirschfeld (1868–1935). 1934. This file has been extracted from another file: Karl Giese and Magnus Hirschfeld.jpg. https://commons.wikimedia.org/wiki/File:Magnus_Hirschfeld_1934.jpg. CC-BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0/deed.en
+
+SchachtHjalmar.jpg: Bain News Service, publisher. Hjalmar Schacht (1877-1970), President of the Reichsbank. Unrecorded. This image is available from the United States Library of Congress's Prints and Photographs division under the digital ID ggbain.36575., Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Hjalmar_Schacht.jpg. Public Domain
+
+SchmidtRobert.jpg: Bain News Service, publisher. Robt. Schmidt. 1900. This image is available from the United States Library of Congress's Prints and Photographs division under the digital ID ggbain.34756., Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Robt._Schmidt_LCCN2014714908.jpg. Public Domain
+
+SeydewitzMax.jpg: Max Seydewitz, source not recorded.
+
+SiemsenAnna.jpg: Anna Siemsen, source not recorded.
+
+StampferFriedrich.jpg: Porträtfoto von Friedrich Stampfer. circa 1931date QS:P,+ - -00T00:00:00Z/9,P1480,Q5727902 1931. Edmund Schultz (Hrsg.): Das Gesicht der Demokratie. Breitkopf & Härtel, Leipzig 1931, S. 84. https://commons.wikimedia.org/wiki/File:Friedrich_Stampfer.jpg. Public Domain
+
+Vectorized_Reichsbanner_Logo.svg: Gamla y Fria. Vectorized Reichsbanner Logo. Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Vectorized_Reichsbanner_Logo.svg. CC-BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/deed.en
+
+Kommunistische_Partei_Deutschlands_KPD_logo.svg: FDRMRZUSA. Kommunistische Partei Deutschlands (KPD) logo. Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Kommunistische_Partei_Deutschlands_(KPD)_logo.svg. CC-BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/deed.en
+
+DNVP_logo_basic.svg: Dahn. DNVP logo (basic). Wikimedia Commons, https://commons.wikimedia.org/wiki/File:DNVP_logo_(basic).svg. CC-BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/deed.en
+
+SPD_monogram_recreation.svg: Drawn for this game after the period SPD symbol (the oval monogram on a 1927 Hannover Ortsverein flag and on SPD dues stamps), CC0.
+
+Zentrum_cross_shield_recreation.svg: Drawn for this game after the period Zentrum symbol (the white cross on a shield in a 1930 Zentrum poster, “Wer schützt Familie-Heimat-Arbeit?”), CC0.
+
+DDP_tricolour_shield_recreation.svg: Drawn for this game after the period DDP symbol (the black-red-gold shield in Theo Matejko’s 1928 DDP poster, “Säubert das Reich!”), CC0.
