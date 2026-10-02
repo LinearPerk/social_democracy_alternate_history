@@ -4,7 +4,8 @@
   "description": "Building the game:",
   "main": "out/html/index.html",
   "scripts": {
-    "dendrynexus": "dendrynexus"
+    "dendrynexus": "dendrynexus",
+    "test": "node --test \"test/state-column/*.test.js\" \"test/layout/*.test.mjs\" \"test/layout/lib/*.test.mjs\""
   },
   "repository": {
     "type": "git",
