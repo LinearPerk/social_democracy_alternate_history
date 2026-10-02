@@ -1,0 +1,549 @@
+/*
+ * Layout: the three-column grid on #mid_panel (state, decision, depth), in
+ * ladder order. Loaded after game.css and the state column's stylesheet, so
+ * rules here override both by cascade order rather than editing them.
+ *
+ * Below 800px the grid is unused; the columns stack in DOM order (state bar,
+ * state, date line, decision, depth bar, depth, footer) as ordinary block
+ * boxes, each bar over its column, so no grid
+ * rules are needed for that tier beyond removing upstream's absolute
+ * positioning, float, and fixed widths.
+ */
+
+/* #tools_wrapper carried the sidebar's old absolute positioning; it is now
+   the state area, sized by the grid (or, stacked, a plain block). */
+#tools_wrapper {
+  position: static;
+  left: auto;
+  right: auto;
+  margin: 0;
+}
+.tools {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+}
+/* Upstream floats the sidebar (.tools.left, two classes) to sit beside the
+   old absolute #content; matching that specificity here, not just .tools,
+   is what actually overrides it. Left floated, #tools_wrapper has no
+   in-flow content and collapses to zero height, so stacked (below 800px,
+   ordinary block flow) #date-line moves up and overlaps it. */
+.tools.left,
+.tools.right {
+  float: none;
+  left: auto;
+  right: auto;
+}
+
+/* Before a game starts #stats_sidebar carries .sidebar-hidden. Below 1300px
+   its wrapper collapses too, so the state track doesn't reserve empty space.
+   The three-column tier keeps the wrapper as an empty panel (below). */
+@media screen and (max-width: 1299px) {
+  #tools_wrapper:has(#stats_sidebar.sidebar-hidden) {
+    display: none;
+  }
+}
+
+/* Below 1300px an empty depth column takes no space, so the stacked and
+   two-column tiers show nothing until it has content. The three-column tier
+   shows it as an empty panel, before a game starts and during play (below). */
+@media screen and (max-width: 1299px) {
+  #depth_column:empty {
+    display: none;
+  }
+}
+
+/* Upstream's 540px reading-width cap, moved to the grid's own decision
+   track. The header spans the whole grid instead. Stacked (under 800px) the
+   column keeps the 36rem measure, which the depth box under it shares (its
+   own stylesheet sets that cap); the grid tiers narrow both to 32rem. */
+header,
+#content,
+footer,
+#date-line {
+  max-width: 36rem;
+}
+@media screen and (min-width: 800px) {
+  #content,
+  footer,
+  #date-line {
+    max-width: 32rem;
+  }
+}
+header {
+  max-width: none;
+}
+#date-line {
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Upstream centers #content and footer with auto side margins. On a grid
+   item those make the box shrink to its text and center inside the track,
+   so a short page came out narrower than the date line above it. In the
+   grid tiers they take 0 margins and stretch to the track; stacked, the
+   upstream centering stays. A wider child (the fixed-width charts at a
+   large font) scrolls inside the box through upstream's overflow: auto. */
+@media screen and (min-width: 800px) {
+  #content,
+  footer {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* The header and the column bars sit directly over the full-screen background
+   art, so each carries its own backing (page colour and shadow) to stay
+   legible there. */
+header,
+.column-bar {
+  background-color: var(--bg-color);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Column bars: a one-line title bar over each of the three columns, in the
+   date line's style (Jost small caps, centred). The date line, the state
+   column's bar (#state-bar) and the depth column's (#depth-bar) share this
+   class, and all three are one height: the page's own line height, so the
+   three sit on one line above their columns in the three-column tier. Each
+   is as wide as its column (width: 100% in a grid area or a block), with a
+   small gap under it. Content that the modules put at a bar's ends (the
+   Seats/Polls toggle, Back and the view picks) is styled in their own
+   stylesheets. A bar with nothing in it (no game yet, no depth to show)
+   takes no space. */
+.column-bar {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: start;
+  width: 100%;
+  height: 1.55em;
+  margin: 0 0 6px;
+  padding: 0 8px;
+  overflow: hidden;
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 1.55;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+.column-bar:empty {
+  display: none;
+}
+
+/* #mid_panel carried upstream's off-center side margins; the grid tiers
+   below center themselves instead. */
+#mid_panel {
+  margin: 0;
+}
+
+/* Named areas, shared by both grid tiers below. Which cells each name maps
+   to changes per tier and per state (the :has() variants); this assignment
+   doesn't, so it lives outside either media query. */
+header {
+  grid-area: header;
+}
+#tools_wrapper {
+  grid-area: state;
+}
+#state-bar {
+  grid-area: state-bar;
+}
+#date-line {
+  grid-area: date;
+}
+#depth-bar {
+  grid-area: depth-bar;
+}
+#content {
+  grid-area: content;
+  align-self: start;
+}
+footer {
+  grid-area: footer;
+  align-self: start;
+}
+/* Upstream's footer holds only a comment (its save links and credit are
+   commented out), so it draws nothing but still carries its top margin. It
+   leaves the layout until it has an element child to show. (A footer of
+   bare text would need a rule of its own.) */
+footer:not(:has(*)) {
+  display: none;
+}
+#depth_column {
+  grid-area: depth;
+  align-self: start;
+}
+
+/* Two-column tier: state beside decision, depth below decision at the same
+   width. State spans every row below the bars, including the depth rows, so
+   the sticky state column has the whole page height to work with, not just
+   the decision column's own height. The state bar and the date line share
+   the row above the columns, each over its own column, so the state box
+   starts level with #content's top. The depth bar sits over the depth
+   column, in the decision track. The last row is 1fr so any extra height a
+   spanning item needs (the state column when it is taller than the decision
+   column) goes there, not into the rows that hold #content and the footer.
+   An empty depth column and its bar draw nothing, and their rows collapse. */
+@media screen and (min-width: 800px) and (max-width: 1299px) {
+  #mid_panel {
+    display: grid;
+    column-gap: 2rem;
+    justify-content: center;
+    grid-template-columns: 21rem minmax(0, 32rem);
+    grid-template-rows: auto auto auto auto auto 1fr;
+    grid-template-areas:
+      "header    header"
+      "state-bar date"
+      "state     content"
+      "state     footer"
+      "state     depth-bar"
+      "state     depth";
+  }
+
+  /* Before a game starts, the state track is gone too: decision (and depth,
+     when it has content) centers alone. */
+  #mid_panel:has(#stats_sidebar.sidebar-hidden) {
+    grid-template-columns: minmax(0, 32rem);
+    grid-template-areas:
+      "header"
+      "date"
+      "content"
+      "footer"
+      "depth-bar"
+      "depth";
+  }
+}
+
+/* Three-column tier: state, decision, and depth side by side, always: on the
+   title and hub screens before a game starts as well as during play, so the
+   page is arranged as the finished game will be. The three column bars
+   (state, date, depth) share the row above them, so the three column boxes
+   share a top edge. The last row takes the extra height a tall state or
+   depth column needs, so it goes below the footer, not between #content and
+   it. It is minmax(0, 1fr), not 1fr: the depth column spans this row and
+   carries a min-height, and a plain 1fr counted that whole height as a
+   demand on the row (about 436px for the 30rem panel), which stretched the
+   empty footer and left the page scrolling into blank background.
+
+   The decision track runs 28rem to 32rem and the depth track 24rem to 36rem.
+   Spare width splits evenly between the two until decision reaches 32rem,
+   then goes to depth until it reaches 36rem, then to the margins. The floors
+   keep both columns wide enough for their content (the depth column's
+   Reichstag entry needs 24rem). At 1300px the tracks need 21 + 28 + 24 rem
+   plus two 2rem gaps = 77rem (1232px), inside the 1269px left after the
+   scrollbar and body margins, so nothing overflows. */
+@media screen and (min-width: 1300px) {
+  #mid_panel {
+    display: grid;
+    column-gap: 2rem;
+    justify-content: center;
+    grid-template-columns: 21rem minmax(28rem, 32rem) minmax(24rem, 36rem);
+    grid-template-rows: auto auto auto minmax(0, 1fr);
+    grid-template-areas:
+      "header    header  header"
+      "state-bar date    depth-bar"
+      "state     content depth"
+      "state     footer  depth";
+  }
+
+  /* The depth column is a panel even while empty, in the same parchment box
+     as #content (mirrored here because game.css sets that box on #content
+     alone), tall enough to read as a column. Before a game starts the state
+     column is the same empty panel: #stats_sidebar, which draws the panel
+     during play, is hidden then, so its wrapper carries the box instead. */
+  #depth_column,
+  #tools_wrapper:has(#stats_sidebar.sidebar-hidden) {
+    box-sizing: border-box;
+    align-self: start;
+    min-height: 30rem;
+    color: var(--text-color);
+    background-color: var(--content-bg-color);
+    font-size: 1.1em;
+    padding: 1em 1.5em 1.5em 1.5em;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+  }
+  body.dark-mode #depth_column,
+  body.dark-mode #tools_wrapper:has(#stats_sidebar.sidebar-hidden) {
+    border-style: double;
+    border-width: 4px;
+    border-color: #888;
+  }
+
+  /* During play the depth column's floor is the state column's height or
+     the decision panel's, whichever is taller (see Panel bottoms), not
+     30rem. */
+  #mid_panel:not(:has(#stats_sidebar.sidebar-hidden)) #depth_column {
+    min-height: max(var(--state-h, var(--panel-min)), var(--decision-h, 0px));
+  }
+}
+
+/* Sticky state column */
+
+/* #tools_wrapper (the grid item) stretches to fill the whole "state" area,
+   which spans every row from #content's down; that area is as tall as the
+   decision column and its footer (and, in the two-column tier, depth).
+   Sticky positioning on a box that already fills its containing block has
+   no room to move, so it goes on #stats_sidebar instead: a plain child of
+   #tools_wrapper with its own intrinsic height, free to stick within its
+   stretched parent as the page scrolls. Below 800px it stays a normal
+   block: no sticky, no height cap, scrolls away with the rest of the page. */
+@media screen and (min-width: 800px) {
+  #stats_sidebar {
+    position: sticky;
+    top: 1rem;
+    /* One screen at scroll 0: the box never crosses the fold. Its height is
+       otherwise its content's, and the panels beside it follow (see Panel
+       bottoms). */
+    max-height: calc(100vh - var(--columns-top, 4rem) - 0.5rem);
+    overflow-y: auto;
+  }
+}
+
+/* Panel bottoms */
+
+/* During play the state column (the dashboard) sets the panels' height. Its
+   box is as tall as its content, up to one screen at scroll 0 (the cap in
+   Sticky state column: the window less --columns-top, less the body's 0.5rem
+   margin). banner.js publishes that box's height as --state-h, and the
+   decision and depth panels take it as their floor, so the three bottoms
+   meet at the dashboard's bottom and a tall window shows no blank parchment
+   under it. --columns-top is the page offset of the row the columns sit in
+   (banner.js measures it, so a slim or expanded banner both work, animation
+   included); an expanded banner lowers the cap and the panels follow. A
+   panel with more content than that (the hub's advisor rows on a laptop, a
+   long depth entry) grows past it alone; the depth column rises to the
+   decision panel's height, so those two end together. --panel-min, one
+   screen less the same offset, is the title page's floor and the first
+   paint's, before --state-h is published. The 20rem keeps it sane in a very
+   short window. Before a game starts (.sidebar-hidden) the side panels keep
+   their own floors and only #content takes the screen floor, in the
+   three-column tier (see below). The stacked tier has none of this. */
+@media screen and (min-width: 800px) {
+  #mid_panel {
+    --panel-min: max(20rem, calc(100vh - var(--columns-top, 4rem) - 0.5rem));
+  }
+  #mid_panel:not(:has(#stats_sidebar.sidebar-hidden)) #content {
+    box-sizing: border-box;
+    min-height: var(--state-h, var(--panel-min));
+  }
+}
+
+/* Header */
+
+/* The header is one panel across the whole grid, holding the title line and
+   the links; its backing (shared rule above) keeps them legible over the
+   scene art. Upstream centers the header's shrink-to-fit box with auto
+   margins inside its old 540px column. That cap is already gone (above), but
+   the auto margins would still keep the box content-sized, so a plain 0
+   margin is what lets the grid stretch it across the row. The small bottom
+   margin is the gap above the date line and the columns.
+
+   Narrow layout first, since it is the default: title and author run as
+   text that wraps, and the links take their own line under them,
+   left-aligned. The one-line layout below replaces it only where the header
+   is known to be wide enough. */
+header {
+  margin: 0 0 0.5rem;
+  box-sizing: border-box;
+  padding: 0.35rem 1rem;
+  /* Undoes upstream's right alignment. */
+  text-align: left;
+  /* Set here, not on the title: in the wrapped layout the header's own line
+     height sets the spacing between lines, and the default is taller. */
+  line-height: 1.2;
+}
+
+/* Jost is loaded by the state column's stylesheet, so it isn't imported a
+   second time here; the header shares that typeface to read as one design
+   with the state column. Colours stay upstream's. */
+header h1,
+header h2,
+#header-links {
+  font-family: 'Jost', sans-serif;
+}
+#game-title {
+  display: inline;
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  /* The gap to the author lives here so a wrapped author starts flush left. */
+  margin-right: 0.5rem;
+}
+/* Inline-block keeps "by Autumn Chen" whole when it wraps. */
+#game-author {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+/* The links leave upstream's floated box at the left. float: none alone
+   would leave upstream's inline-block, so display: block puts them on their
+   own line. Their spacing (padding-right on each link) stays upstream's. */
+#header-links {
+  float: none;
+  display: block;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  font-size: 0.95rem;
+  box-shadow: none;
+  background: none;
+}
+/* One line: title and author at the left, links at the right. It fits only
+   in the three-column tier, where the header spans all three tracks (at
+   least 77rem, before a game starts as well as during play); the title needs
+   about 62rem. Every other header is narrower (two-column tier 59rem, a lone
+   column 36rem at most, the stacked tier the viewport). Baseline alignment
+   keeps the smaller links on the title line. */
+@media screen and (min-width: 1300px) {
+  header {
+    display: flex;
+    align-items: baseline;
+  }
+  #header-links {
+    margin: 0 0 0 auto;
+  }
+  #header-links a {
+    padding: 0 0 0 1em;
+  }
+}
+
+/* Slim banner */
+
+/* During play banner.js puts `slim` on the header: the same element as a
+   one-line strip, so the columns start higher and the state column has more
+   room. The title (a button, made by banner.js, that expands the banner when
+   clicked) sits at the left in small Jost caps, the three links at the right.
+   The strip is one line at every width: a long title is cut with an
+   ellipsis before the links give way. It sits flush with the top of the
+   window: the 8px of body margin above the full banner goes to the columns
+   instead (the header is a grid item, so its negative margin doesn't
+   collapse into anything). banner.js animates the change in height and
+   margins, pushing the grid; nothing overlays the content. */
+#game-title button {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+#game-title button:disabled {
+  color: inherit;
+  cursor: default;
+}
+/* A small chevron marks the title as the control: down while the banner can
+   grow, up while it is expanded. Before a game starts the button is disabled
+   and draws none. */
+#game-title button:not(:disabled)::after {
+  content: '\25B4';
+  margin-left: 0.4em;
+  font-size: 0.9em;
+  vertical-align: 0.1em;
+}
+header.slim #game-title button:not(:disabled)::after {
+  content: '\25BE';
+}
+header.banner-moving {
+  overflow: hidden;
+}
+
+header.slim {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  margin: -8px 0 0.3rem;
+  padding: 0 1rem;
+  overflow: hidden;
+}
+header.slim #game-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.8rem;
+  line-height: 26px;
+}
+header.slim #game-author {
+  display: none;
+}
+header.slim #header-links {
+  flex: 0 0 auto;
+  margin: 0 0 0 auto;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+header.slim #header-links a {
+  display: inline-block;
+  padding: 0 0 0 1em;
+  line-height: 26px;
+}
+header.slim #game-title button:focus-visible,
+header.slim #header-links a:focus-visible {
+  outline-offset: -2px;
+}
+
+/* Music controls */
+
+/* music.js puts a play/pause button, a skip button and a mute toggle in
+   front of the three links, once the game has a track. They take the links'
+   colour and a faint hover of the same kind. Icons are 18px in the full
+   banner and 16px in the strip, which keeps the strip at 26px. */
+#header-music {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  /* The buttons are taller than the links' line; the negative vertical
+     margin keeps them from stretching the banner. */
+  margin: -8px 0.25em -8px 0;
+}
+#header-music[hidden],
+#header-music button[hidden] {
+  display: none;
+}
+#header-music button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 26px;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  color: var(--link-color);
+  cursor: pointer;
+}
+#header-music button:hover {
+  background-color: var(--link-hover-color);
+}
+#header-music svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+header.slim #header-music {
+  margin: 0;
+}
+header.slim #header-music button {
+  width: 24px;
+  height: 24px;
+}
+header.slim #header-music svg {
+  width: 16px;
+  height: 16px;
+}
+header.slim #header-music button:focus-visible {
+  outline-offset: -2px;
+}
