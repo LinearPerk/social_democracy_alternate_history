@@ -1,0 +1,139 @@
+/*
+ * Defense entries: styles for defense-entry.js, a reference card for one
+ * defense organisation. Symbol and name at the top, then one labelled block
+ * per fact, in the bar, meter and sub-heading styles readouts.css defines.
+ * Tokens come from depth-column.css.
+ */
+
+#depth_column .dc-ehead {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  margin-bottom: 0.7em;
+}
+#depth_column .dc-esym {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 48px;
+  height: 48px;
+  border-radius: 6px;
+}
+#depth_column .dc-esym.sym {
+  background: none;
+}
+#depth_column .dc-esym img {
+  height: 48px;
+  max-width: 72px;
+  object-fit: contain;
+}
+#depth_column .dc-esym:not(.sym) {
+  width: 48px;
+}
+#depth_column .dc-ename {
+  margin: 0;
+  font: 600 1.35em/1.15 'Jost', sans-serif;
+  color: var(--text-color);
+}
+#depth_column .dc-ede {
+  margin-top: 0.15em;
+  font-size: 0.85em;
+  font-style: italic;
+  color: var(--dc-muted);
+  overflow-wrap: break-word;
+}
+#depth_column .dc-entry .dc-stack > span.dim {
+  opacity: 0.3;
+}
+#depth_column .dc-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2em 0.9em;
+  margin-top: 0.35em;
+  font: 0.78em 'Jost', sans-serif;
+  color: var(--dc-muted);
+}
+#depth_column .dc-legend i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 0.35em;
+  border-radius: 2px;
+}
+#depth_column .dc-legend .here {
+  color: var(--text-color);
+  font-weight: 600;
+}
+#depth_column .dc-share {
+  margin: 0.45em 0 0;
+  text-indent: 0;
+  font-size: 0.9em;
+}
+#depth_column .dc-steps {
+  flex: 1;
+  display: flex;
+  gap: 3px;
+}
+#depth_column .dc-steps i {
+  flex: 1;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--dc-track);
+}
+#depth_column .dc-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.2em;
+  font: 0.72em 'Jost', sans-serif;
+  color: var(--dc-muted);
+}
+#depth_column .dc-loyal {
+  position: relative;
+  flex: 1;
+  height: 12px;
+  border-radius: 6px;
+  background: var(--dc-track);
+}
+#depth_column .dc-loyal .fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+#depth_column .dc-loyal .fill.dis {
+  background: var(--sc-bad);
+}
+#depth_column .dc-loyal .fill.loy {
+  background: var(--sc-good);
+}
+#depth_column .dc-loyal .mid {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 47.5%;
+  width: 1px;
+  background: var(--dc-muted);
+}
+#depth_column .dc-loyal .mark {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 4px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: var(--text-color);
+  box-shadow: 0 0 0 1px var(--content-bg-color);
+}
+#depth_column .dc-library p {
+  margin: 0.45em 0;
+  text-indent: 0;
+  line-height: 1.55;
+  font-size: 15px;
+  overflow-wrap: break-word;
+}
+#depth_column .dc-entry .dc-times-links {
+  margin-top: 1.1em;
+  padding-top: 0.6em;
+  border-top: 1px solid var(--dc-rule);
+}

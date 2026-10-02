@@ -1,0 +1,31 @@
+/*
+ * Entries: styles for entries.js. Names that open an entry (party names in
+ * the state column's ledger, any [data-depth-term] span, and an advisor's
+ * name in the hire menu) show a pointer
+ * and, on hover, a dotted underline. Hover changes nothing else.
+ */
+[data-sc-party] .nm,
+[data-depth-term],
+[data-depth-advisor] {
+  cursor: pointer;
+}
+[data-sc-party] .nm:hover,
+[data-depth-term]:hover,
+[data-depth-advisor]:hover {
+  text-decoration: underline dotted;
+  text-underline-offset: 0.15em;
+}
+
+/* A hire choice keeps the author's bio in its subtitle for the advisor's
+   entry to read; the menu itself shows only the actions line. */
+ul.choices .hire-bio {
+  display: none;
+}
+
+/* The footer pointing into the Library, under an entry's text. */
+#depth_column .dc-entry-foot {
+  margin-top: 1.2em;
+  padding-top: 0.5em;
+  border-top: 1px solid var(--card-border-color);
+  font: 12px/1.45 'Jost', sans-serif;
+}

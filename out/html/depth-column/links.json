@@ -1,0 +1,101 @@
+{
+  "root.start": [
+    {"text": "Karl Kautsky", "href": "https://en.wikipedia.org/wiki/Karl_Kautsky"}
+  ],
+  "hilferding": [
+    {"text": "Rudolf Hilferding", "href": "https://en.wikipedia.org/wiki/Rudolf_Hilferding"}
+  ],
+  "sklarek_affair": [
+    {"text": "Sklarek scandal", "href": "https://en.wikipedia.org/wiki/Sklarek_scandal"},
+    {"text": "Sklarek-Skandal (German)", "href": "https://de.wikipedia.org/wiki/Sklarek-Skandal"}
+  ],
+  "streetfighting": [
+    {"text": "Reichsbanner Schwarz-Rot-Gold", "href": "https://en.wikipedia.org/wiki/Reichsbanner_Schwarz-Rot-Gold"}
+  ],
+  "understanding_enemy": [
+    {"text": "Theodor Geiger", "href": "https://en.wikipedia.org/wiki/Theodor_Geiger"},
+    {"text": "Carlo Mierendorff", "href": "https://en.wikipedia.org/wiki/Carlo_Mierendorff"},
+    {"text": "Alexander Schifrin (German)", "href": "https://de.wikipedia.org/wiki/Alexander_Schifrin"}
+  ],
+  "papen_chancellor": [
+    {"text": "Franz von Papen", "href": "https://en.wikipedia.org/wiki/Franz_von_Papen"},
+    {"text": "Papen cabinet", "href": "https://en.wikipedia.org/wiki/Papen_cabinet"}
+  ],
+  "education_science": [
+    {"text": "Weimar Constitution", "href": "https://en.wikipedia.org/wiki/Weimar_Constitution"},
+    {"text": "Educational Reform in Germany 1918-1933 (G. W. Martin, Durham thesis)", "href": "https://etheses.durham.ac.uk/id/eprint/9738/"}
+  ],
+  "response_to_antisemitism": [
+    {"text": "History of the Jews in Germany", "href": "https://en.wikipedia.org/wiki/History_of_the_Jews_in_Germany"},
+    {"text": "Iron Front", "href": "https://en.wikipedia.org/wiki/Iron_Front"}
+  ],
+  "aufhauser": [
+    {"text": "Siegfried Aufhäuser", "href": "https://en.wikipedia.org/wiki/Siegfried_Aufhäuser"}
+  ],
+  "baade": [
+    {"text": "Fritz Baade", "href": "https://en.wikipedia.org/wiki/Fritz_Baade"}
+  ],
+  "braun": [
+    {"text": "Otto Braun", "href": "https://en.wikipedia.org/wiki/Otto_Braun"}
+  ],
+  "breitscheid": [
+    {"text": "Rudolf Breitscheid", "href": "https://en.wikipedia.org/wiki/Rudolf_Breitscheid"}
+  ],
+  "hirschfeld": [
+    {"text": "Magnus Hirschfeld", "href": "https://en.wikipedia.org/wiki/Magnus_Hirschfeld"}
+  ],
+  "juchacz": [
+    {"text": "Marie Juchacz", "href": "https://en.wikipedia.org/wiki/Marie_Juchacz"}
+  ],
+  "leber": [
+    {"text": "Julius Leber", "href": "https://en.wikipedia.org/wiki/Julius_Leber"}
+  ],
+  "leipart": [
+    {"text": "Theodor Leipart", "href": "https://en.wikipedia.org/wiki/Theodor_Leipart"}
+  ],
+  "levi": [
+    {"text": "Paul Levi", "href": "https://en.wikipedia.org/wiki/Paul_Levi"}
+  ],
+  "mierendorff": [
+    {"text": "Carlo Mierendorff", "href": "https://en.wikipedia.org/wiki/Carlo_Mierendorff"}
+  ],
+  "muller": [
+    {"text": "Hermann Müller", "href": "https://en.wikipedia.org/wiki/Hermann_Müller_(politician,_born_1876)"}
+  ],
+  "pfulf": [
+    {"text": "Antonie Pfülf", "href": "https://en.wikipedia.org/wiki/Antonie_Pfülf"}
+  ],
+  "radbruch": [
+    {"text": "Gustav Radbruch", "href": "https://en.wikipedia.org/wiki/Gustav_Radbruch"}
+  ],
+  "rosenfeld": [
+    {"text": "Kurt Rosenfeld", "href": "https://en.wikipedia.org/wiki/Kurt_Rosenfeld"}
+  ],
+  "schumacher": [
+    {"text": "Kurt Schumacher", "href": "https://en.wikipedia.org/wiki/Kurt_Schumacher"}
+  ],
+  "sender": [
+    {"text": "Toni Sender", "href": "https://en.wikipedia.org/wiki/Toni_Sender"}
+  ],
+  "severing": [
+    {"text": "Carl Severing", "href": "https://en.wikipedia.org/wiki/Carl_Severing"}
+  ],
+  "seydewitz": [
+    {"text": "Max Seydewitz", "href": "https://en.wikipedia.org/wiki/Max_Seydewitz"}
+  ],
+  "siemsen": [
+    {"text": "Anna Siemsen (German)", "href": "https://de.wikipedia.org/wiki/Anna_Siemsen"}
+  ],
+  "stampfer": [
+    {"text": "Friedrich Stampfer (German)", "href": "https://de.wikipedia.org/wiki/Friedrich_Stampfer"}
+  ],
+  "wels": [
+    {"text": "Otto Wels", "href": "https://en.wikipedia.org/wiki/Otto_Wels"}
+  ],
+  "wissell": [
+    {"text": "Rudolf Wissell", "href": "https://en.wikipedia.org/wiki/Rudolf_Wissell"}
+  ],
+  "woytinsky": [
+    {"text": "Wladimir Woytinsky", "href": "https://en.wikipedia.org/wiki/Vladimir_Voitinsky"}
+  ]
+}

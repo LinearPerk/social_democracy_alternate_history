@@ -6,10 +6,13 @@ on-arrival: month_actions += 1
 card-image: img/iron_front.png
 tags: party_affairs, antifascism
 max-visits: 1
+subtitle: Responding to antisemitism, which has grown since the start of the economic depression.
 
 = Confronting Antisemitism
 
-Antisemitism has long been a latent feature of German society, but since the beginning of the economic depression, it has grown to a horrifying extent. The Nazis are the worst of it, but all the right-wing parties are deeply antisemitic. Regarding the SPD specifically, our right-wing enemies love to deploy their racist rhetoric against our many Jewish comrades, magnifying criticism of any minor transgression, and they call the entire SPD a Jewish party. We are a favorite target of their invectives.
+{!<span class="depth-summary">!}Antisemitism has grown to a horrifying extent since the Depression began. The right-wing parties, the Nazis worst of all, turn it against the SPD's many Jewish members and call the entire SPD a Jewish party.{!</span>!}
+
+{!<span class="depth">!}Antisemitism has long been a latent feature of German society, but since the beginning of the Depression, it has grown to a horrifying extent. The Nazis are the worst of it, but all the right-wing parties are deeply antisemitic. Regarding the SPD specifically, its right-wing enemies love to deploy their racist rhetoric against its many Jewish members, magnifying criticism of any minor transgression, and they call the entire SPD a Jewish party. The party is a favorite target of their invectives.{!</span>!}
 
 - @socialism_of_fools: Antisemitism is the "socialism of fools". We will defeat them with real socialism.
 - @if: Antisemitism is a crisis. Direct the full force of the Iron Front against antisemitism.

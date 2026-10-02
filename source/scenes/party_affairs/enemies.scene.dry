@@ -6,6 +6,7 @@ max-visits: 3
 is-card: true
 card-image: img/poster_1.png
 tags: party_affairs
+subtitle: Which parties we treat as our main opponents.
 
 = Choosing our enemies
 

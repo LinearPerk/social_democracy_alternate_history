@@ -7,7 +7,9 @@ new-page: true
 
 = Otto Wels
 
-Wels is the long-time chairman of the SPD. He is a gifted organizer and a member of the centrist faction.
+{!<span class="depth-summary">!}The long-time chairman of the SPD.{!</span>!}
+
+{!<span class="depth">!}Wels is the long-time chairman of the SPD. He is a gifted organizer and a member of the centrist faction.{!</span>!}
 
 - @clear_agenda
 - @party_discipline

@@ -1,0 +1,41 @@
+{
+  "opposition": {
+    "title": "Opposition",
+    "html": "<p>A party in opposition sits in the Reichstag but holds no ministries. Before June 1928 the SPD was in opposition to the fourth Marx cabinet, which was made up of the Center, DVP, BVP and DNVP. That cabinet resigned in June, and the second Müller cabinet, led by the SPD's Hermann Müller, took office on 28 June.</p><p>The game opens with the SPD in opposition, early in 1928. Nearly all Government Affairs cards need the party in government, so they do not appear. Opposition spares the party one cost: when unemployment is very high, working-class support for the SPD drains away only while the SPD governs.</p>",
+    "library": "curr_gov"
+  },
+  "toleration": {
+    "title": "Toleration",
+    "html": "<p>Toleration means supporting a government from outside it, without taking ministries. After the second Müller cabinet fell in March 1930, Heinrich Brüning led the first presidential cabinet and ruled by emergency decree. The SPD opposed his policies, yet it tolerated his government, giving it tacit support.</p><p>In the game, toleration keeps a minority government in office while the SPD stays out of the cabinet. Starting it costs some support for the Republic. The Dealing with Toleration card then lets the party end the arrangement with a vote of no confidence, which brings the next election within three months, strengthens the Left and costs more support for the Republic. The same card lets it urge the coalition against austerity, improve relations with the Center and DVP, or, for 2 resources, try to join a new Grand Coalition.</p>",
+    "library": "curr_gov"
+  },
+  "government": {
+    "title": "Government",
+    "html": "<p>A party is in government when it holds ministries in the cabinet. Under the Weimar Constitution the president appointed and removed the chancellor, who answered to the Reichstag, and the chancellor and ministers had to resign after a vote of no confidence. The SPD governed in the second Müller cabinet from 28 June 1928 until it resigned on 27 March 1930, after the coalition split over unemployment insurance.</p><p>In the game, being in government opens the Government Affairs cards. Most also need a ministry the SPD holds: Agricultural Policy, for example, needs the agriculture ministry. Coalition partners lose patience over time, and when their dissent climbs high enough they can call a vote of no confidence that ends the government. While the SPD governs, very high unemployment also wears down working-class support for the party.</p>",
+    "library": "curr_gov"
+  },
+  "caretaker": {
+    "title": "Caretaker",
+    "html": "<p>A caretaker government stays in office to run the state until a regular government is formed or elected, and it is usually limited to keeping things as they are. The Weimar Constitution forced a chancellor and ministers to resign after a vote of no confidence. The fourth Marx cabinet resigned on 12 June 1928 and stayed on as a caretaker government until the second Müller cabinet took office on 28 June.</p><p>In the game, the SPD becomes a caretaker government when the Right's vote of no confidence removes it and Braun is president. The chancellor stays, but can no longer enact new policies, so most of the party's Government Affairs cards stop appearing, and new elections follow within about three months. If Hindenburg is president, the same defeat leaves the SPD in opposition instead. The position ends at the next election.</p>",
+    "library": "curr_gov"
+  },
+  "factions": {
+    "title": "Factions",
+    "html": "<p>The SPD was never of one mind. Anti-war members were expelled in 1916 and 1917 and formed the USPD. In the game the party divides into five wings: the Left, the Centrists (followers of Kautsky and Hilferding), Labor (the free trade unions), the Reformists and, once they emerge, the Neorevisionists.</p><p>Each faction has a strength, its share of the party, and a dissent level. The game rebalances the strengths so that they always add up to the whole party. The party's choices push them around, and the Party tab shows both.</p>",
+    "library": "factions"
+  },
+  "party-resources": {
+    "title": "Party resources",
+    "html": "<p>Long before the Republic, the SPD had grown into a mass organization with educational courses, choral societies, sports clubs and libraries, and its membership passed a million by 1913/14.</p><p>In the game, resources are a stock the party spends on its projects. Most of it comes from the Fundraising card, which pays out the party's current dues, and raising dues brings in more but costs working-class support. Some advisors' actions also bring in resources, and Historical mode adds 2 each January. The Reichsbanner, the party's media, coalition deals, presidential campaigns and calming coalition partners all spend it.</p>"
+  },
+  "party-dissent": {
+    "title": "Party dissent",
+    "html": "<p>Dissent was how the SPD's splits began. The anti-war wing left to form the USPD in 1917, and in autumn 1931 six Reichstag deputies, expelled for breaking party discipline, founded the SAPD with other leftists.</p><p>In the game, party dissent averages the factions' dissent, weighted by their strength. It shrinks the gains from many of the party's choices: the more dissent, the less a campaign wins. When party dissent reaches 30%, or any one faction passes 30, the Party Disunity card can appear, and the party can enforce discipline or make concessions. If the Left's dissent reaches 60, it splits away, forms the SAPD and takes working-class votes with it.</p>",
+    "library": "factions"
+  },
+  "coalition-dissent": {
+    "title": "Coalition dissent",
+    "html": "<p>Coalition dissent counts how far the SPD's partners have been pushed. Each segment is one step toward a vote of no confidence, and when the last one fills, the partner calls the vote: the DVP in a Grand Coalition, the Center Party in a Weimar Coalition, a Popular Front or a minority government. A Grand Coalition, a Popular Front or a minority government has three segments, a Weimar Coalition four. The KPD has a track of its own in a Popular Front (three segments) and in a Left Front (four).</p><p>Choices the partners oppose raise it by a step, and a few by two. If the vote succeeds, the government falls and there is an election in a few months. An election sets both dissents back to 0. No vote can be called if the SPD holds half the seats on its own, or once the constitution bans votes of no confidence without a replacement government.</p>",
+    "library": "curr_gov"
+  }
+}

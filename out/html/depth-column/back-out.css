@@ -1,0 +1,20 @@
+/*
+ * Back-out: styles for back-out.js. The way out of a card sits last in the
+ * choice list, below a double rule, muted and smaller, so it reads as a
+ * different kind of choice from the in-fiction ones above it. Colours come
+ * from the game's variables, which body.dark-mode redefines. The rule's
+ * colour matches game.css's own ul.choices border, which is a fixed value
+ * that works in both themes.
+ */
+ul.choices li.dc-backout {
+  border-top: 3px double #876;
+  border-bottom: none;
+  font-size: 0.9em;
+}
+ul.choices li.dc-backout a {
+  color: var(--unavailable-color);
+}
+/* The double rule replaces the single one the previous choice would draw. */
+ul.choices li:has(+ li.dc-backout) {
+  border-bottom: none;
+}

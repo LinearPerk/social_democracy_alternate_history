@@ -6,6 +6,7 @@ view-if: nazi_urgency > 0 and neorevisionism == 0 and (nsdap_r >= 10 or nsdap_no
 tags: party_affairs
 frequency: 400
 max-visits: 1
+subtitle: Young socialists call for a new revisionism in response to the Nazi threat.
 
 = Neorevisionism: A New Idea
 

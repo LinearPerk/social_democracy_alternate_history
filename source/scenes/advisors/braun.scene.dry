@@ -7,7 +7,9 @@ new-page: true
 
 = Otto Braun
 
-Braun [? if spd_prussia = 1 : is ?][? if spd_prussia = 0 : was ?] the Minister-President of Prussia, the largest state in Germany. He is a reformist leader who seeks to work with the bourgeois parties.
+{!<span class="depth-summary">!}[? if spd_prussia = 1 : The ?][? if spd_prussia = 0 : A former ?]Minister-President of Prussia, and a reformist leader.{!</span>!}
+
+{!<span class="depth">!}Braun [? if spd_prussia = 1 : is ?][? if spd_prussia = 0 : was ?] the Minister-President of Prussia, the largest state in Germany. He is a reformist leader who seeks to work with the bourgeois parties.{!</span>!}
 
 - @coalition
 - @prussian_bulwark

@@ -7,6 +7,7 @@ on-arrival: womens_rights_timer += 10; month_actions += 1
 card-image: img/portraits/PfülfAntonie.jpg
 frequency: 50
 max-visits: 6
+subtitle: Women's equality at work and in marriage and family policy.
 
 = Women's Rights
 

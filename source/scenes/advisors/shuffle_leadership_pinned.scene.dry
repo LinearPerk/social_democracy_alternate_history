@@ -6,4 +6,5 @@ is-pinned-card: true
 on-arrival: month_actions += 1; shuffle_leadership_timer = 6;
 card-image: img/vorwarts_2.jpg
 go-to: shuffle_leadership.rm_main
+subtitle: Removing and adding advisors in the party leadership.
 

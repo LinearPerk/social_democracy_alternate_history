@@ -1,0 +1,125 @@
+/*
+ * Coalition dissent entry: styles for coalition-entry.js, the live part under
+ * the entry's text. Each partner's track (the same segments as the dissent
+ * block on the Party and State tabs, drawn larger), then two lists: what moved
+ * the dissent, and how to lower it. Classes are prefixed cde-; the track keeps
+ * the block's cd- names. Severity colours are the state column's dissent
+ * tokens (--sc-dis-*), the others come from depth-column.css.
+ */
+
+#depth_column .cde .dc-sub:first-child {
+  margin-top: 0.4em;
+}
+#depth_column .cde-partner {
+  --cd-sev: var(--sc-dis-very-low);
+  margin: 0 0 0.9em;
+}
+#depth_column .cde-partner.band-uneasy {
+  --cd-sev: var(--sc-dis-medium);
+}
+#depth_column .cde-partner.band-strained {
+  --cd-sev: var(--sc-dis-high);
+}
+#depth_column .cde-partner.band-vote {
+  --cd-sev: var(--sc-dis-very-high);
+}
+#depth_column .cde-partner.blocked {
+  --cd-sev: var(--dc-muted);
+}
+#depth_column .cde-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font: 500 11px/1.3 'Jost', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+#depth_column .cde-name {
+  color: var(--dc-muted);
+}
+#depth_column .cde-band {
+  font-weight: 600;
+  color: var(--cd-sev);
+}
+#depth_column .cde .cd-track {
+  display: flex;
+  gap: 3px;
+  margin: 0.35em 0 0.5em;
+}
+#depth_column .cde .cd-track i {
+  flex: 1 1 0;
+  box-sizing: border-box;
+  height: 18px;
+  border-radius: 3px;
+  background: var(--dc-track);
+  box-shadow: inset 0 0 0 1px var(--dc-rule);
+  font: normal 600 9px/18px 'Jost', sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--dc-muted);
+}
+#depth_column .cde .cd-track i.on {
+  background: var(--cd-sev);
+  box-shadow: none;
+  color: var(--sc-bar-on);
+}
+#depth_column .cde-say {
+  margin: 0;
+  font: 14px/1.4 'Jost', sans-serif;
+}
+#depth_column .cde-say .sc-badge {
+  vertical-align: -3px;
+  margin-right: 3px;
+}
+#depth_column .cde-none {
+  margin: 0.2em 0 0;
+  font: 13px/1.45 'Jost', sans-serif;
+  color: var(--dc-muted);
+}
+
+/* What moved it: the cause, when, and the step. A rise is the bad kind. */
+#depth_column .cde-log,
+#depth_column .cde-ease {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: 13px/1.45 'Jost', sans-serif;
+}
+#depth_column .cde-move {
+  display: flex;
+  gap: 0.7em;
+  align-items: baseline;
+  padding: 3px 0;
+  border-bottom: 1px solid var(--dc-track);
+}
+#depth_column .cde-what {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+#depth_column .cde-when,
+#depth_column .cde-who {
+  flex: 0 0 auto;
+  font-size: 12px;
+  color: var(--dc-muted);
+}
+#depth_column .cde-amt {
+  flex: 0 0 auto;
+  min-width: 1.6em;
+  text-align: right;
+  font-weight: 600;
+}
+#depth_column .cde-amt.bad {
+  color: var(--sc-bad);
+}
+#depth_column .cde-amt.good {
+  color: var(--sc-good);
+}
+
+/* How to lower it: one short paragraph per way, its name in bold. */
+#depth_column .cde-ease li {
+  margin: 0 0 0.6em;
+}
+#depth_column .cde-ease i {
+  color: var(--dc-muted);
+}

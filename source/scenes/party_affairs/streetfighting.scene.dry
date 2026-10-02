@@ -5,6 +5,7 @@ on-arrival: streetfighting_timer = 6; month_actions += 1; rb_militarization_cost
 view-if: year >= 1930 and sa_strength >= 150 and streetfighting_timer == 0 and not return_to_normalcy
 card-image: img/blutmai_2.jpg
 tags: party_affairs; antifascism
+subtitle: Street battles among the Nazi SA, the Stahlhelm, the RFB, and our Reichsbanner.
 
 = Streetfighting
 

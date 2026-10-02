@@ -1,0 +1,31 @@
+/*
+ * Library in the depth column: styles for library.js. The menu reads as a
+ * quiet list; sections keep the game's serif.
+ */
+#depth_column .dc-menu {
+  margin: 0.8em 0 0;
+  padding-left: 1.2em;
+}
+#depth_column .dc-menu li {
+  margin: 0.35em 0;
+}
+#depth_column .dc-note {
+  display: block;
+  font: 12px/1.45 'Jost', sans-serif;
+  opacity: 0.7;
+}
+
+/* A section that opens with a heading of its own (the timeline, the current
+   government) repeats the column's title, so the opening heading is left
+   out. Any later heading is part of the text and stays, in the column's
+   register. */
+#depth_column .dc-section > h1:first-child,
+#depth_column .dc-section > h2:first-child {
+  display: none;
+}
+#depth_column .dc-section h1,
+#depth_column .dc-section h2 {
+  margin: 1em 0 0.4em;
+  font: 500 15px/1.3 'Jost', sans-serif;
+  text-align: left;
+}

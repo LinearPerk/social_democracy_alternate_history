@@ -6,6 +6,7 @@ on-arrival: month_actions += 1; party_disunity_timer = 4
 card-image: img/Reichstagsfraktion_der_SPD.jpg
 frequency: 200
 tags: party_affairs
+subtitle: Internal dissent is hampering our efforts to win votes and carry out our policies.
 
 # TODO: party dissent events for every faction, have a good image for this... 
 

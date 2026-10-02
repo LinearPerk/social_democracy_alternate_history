@@ -1,0 +1,121 @@
+/*
+ * Readouts: styles for readouts.js, the Polls and Die Zeit views. The bar
+ * and meter rules under Polls (dc-sub, dc-stack, dc-meter-row,
+ * dc-meter-word) are shared with defense-entry.css, which loads after this
+ * file. Tokens (--dc-muted and the rest) come from depth-column.css. Body
+ * text inherits the game's serif, like the decision column.
+ */
+
+/* Polls */
+#depth_column div.dc-sub {
+  font: 500 11px 'Jost', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--dc-muted);
+  margin: 0.9em 0 0.3em;
+}
+#depth_column .dc-polls > .dc-sub:first-child {
+  margin-top: 0;
+}
+#depth_column .dc-stack {
+  display: flex;
+  height: 12px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--dc-track);
+}
+#depth_column .dc-stack > span {
+  height: 100%;
+}
+/* The Library's .dc-note (Jost, small, block) is a different note. */
+#depth_column .dc-polls .dc-note {
+  margin-top: 1em;
+  font-family: inherit;
+  opacity: 1;
+  font-size: 0.85em;
+  font-style: italic;
+  color: var(--dc-muted);
+}
+#depth_column .dc-meter-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+#depth_column .dc-meter {
+  flex: 1;
+  height: 12px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--dc-track);
+}
+#depth_column .dc-meter .fill {
+  display: block;
+  height: 100%;
+  background: var(--text-color);
+}
+#depth_column .dc-meter-word {
+  flex: 0 0 auto;
+  min-width: 5.5em;
+  text-align: right;
+  font-size: 0.9em;
+}
+
+/* Die Zeit: reading text at the column's 15px, its dateline and links in
+   Jost like the other labels. */
+#depth_column .dc-times {
+  font-size: 15px;
+  line-height: 1.55;
+}
+#depth_column .dc-times-mast {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 2rem;
+  line-height: 1.1;
+  text-align: center;
+  color: var(--text-color);
+  padding-bottom: 0.15em;
+  border-bottom: 3px double var(--text-color);
+}
+#depth_column .dc-times-dateline {
+  text-align: center;
+  font: 500 11px 'Jost', sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dc-muted);
+  padding: 0.3em 0;
+  margin-bottom: 0.8em;
+  border-bottom: 1px solid var(--dc-rule);
+}
+#depth_column .dc-times-entry {
+  padding-bottom: 0.8em;
+  margin-bottom: 0.8em;
+  border-bottom: 1px solid var(--dc-rule);
+}
+#depth_column .dc-times-entry:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+#depth_column .dc-times-headline {
+  font-weight: bold;
+  line-height: 1.25;
+  color: var(--text-color);
+}
+#depth_column .dc-times-summary {
+  margin: 0.3em 0 0;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+#depth_column .dc-times-links {
+  display: flex;
+  gap: 1em;
+  margin-top: 0.4em;
+  font: 12px/1.45 'Jost', sans-serif;
+}
+#depth_column .dc-times-links a {
+  color: var(--dc-link);
+}
+#depth_column .dc-times-none {
+  margin: 0;
+  color: var(--dc-muted);
+  font-style: italic;
+  text-align: center;
+}

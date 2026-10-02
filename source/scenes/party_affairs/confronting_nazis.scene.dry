@@ -5,6 +5,7 @@ view-if: (nsdap_r >= 10 and nazi_urgency > 1) and confronting_nazis_timer == 0 a
 on-arrival: confronting_nazis_seen += 1; confronting_nazis_timer = 5; month_actions += 1
 card-image: img/iron_front.png
 tags: party_affairs; antifascism
+subtitle: Calls within the party for action against the growing Nazi movement.
 
 # Forming the Iron Front
 

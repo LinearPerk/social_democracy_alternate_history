@@ -1,0 +1,164 @@
+/*
+ * Reichstag entry: styles for reichstag-entry.js, the depth column's
+ * instrument for the seat chart. A list of the named governments as
+ * buttons (name and seat total on one line, member squares under), then the
+ * picked government's partners and requirements. Classes are prefixed rs-;
+ * tokens come from depth-column.css, and the relation fills and good/bad
+ * colours from state-column.css.
+ */
+
+#depth_column .rs-house {
+  margin: 0 0 0.5em;
+  font: 0.85em 'Jost', sans-serif;
+  color: var(--dc-muted);
+}
+
+#depth_column .rs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+#depth_column .rs-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  column-gap: 0.6em;
+  row-gap: 1px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px 8px;
+  text-align: left;
+  font: 0.9em 'Jost', sans-serif;
+  color: var(--text-color);
+  background: none;
+  border: 1px solid var(--dc-rule);
+  border-radius: 4px;
+  cursor: pointer;
+}
+#depth_column .rs-row:hover {
+  background: var(--dc-track);
+}
+#depth_column .rs-row.on {
+  border-color: var(--text-color);
+  background: var(--dc-track);
+}
+#depth_column .rs-name {
+  font-weight: 600;
+}
+#depth_column .rs-cur {
+  margin-left: 0.6em;
+  font-weight: 500;
+  font-size: 0.8em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dc-muted);
+}
+#depth_column .rs-total {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+#depth_column .rs-total b {
+  font-weight: 700;
+}
+#depth_column .rs-total.ok b {
+  color: var(--sc-good);
+}
+#depth_column .rs-total.no b {
+  color: var(--sc-bad);
+}
+#depth_column .rs-members {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.9em;
+  font-size: 0.85em;
+  color: var(--dc-muted);
+}
+#depth_column .rs-mem {
+  white-space: nowrap;
+}
+#depth_column .rs-sw {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 0.35em;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+#depth_column .rs-hint {
+  margin: 0.9em 0 0;
+  font: italic 0.85em 'Jost', sans-serif;
+  color: var(--dc-muted);
+}
+
+/* Partners: swatch and abbreviation, the ledger's relation bar, the word. */
+#depth_column .rs-partners {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+#depth_column .rs-partner {
+  display: grid;
+  grid-template-columns: 4.5em 1fr 6em;
+  align-items: center;
+  column-gap: 0.6em;
+  font: 0.85em 'Jost', sans-serif;
+}
+#depth_column .rs-rel {
+  position: relative;
+  height: 8px;
+  background: var(--dc-track);
+  border-radius: 2px;
+}
+#depth_column .rs-rel .fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px var(--sc-rel-edge);
+}
+#depth_column .rs-rel .tick {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 50%;
+  width: 1px;
+  background: var(--text-color);
+  opacity: 0.5;
+}
+#depth_column .rs-word {
+  color: var(--dc-muted);
+}
+
+/* Requirements: a mark, then the words. */
+#depth_column .rs-req {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: 0.85em/1.35 'Jost', sans-serif;
+}
+#depth_column .rs-req li {
+  display: flex;
+  gap: 0.6em;
+  margin: 0 0 3px;
+}
+#depth_column .rs-req b {
+  flex: 0 0 1em;
+  font-weight: 700;
+}
+#depth_column .rs-req .ok b {
+  color: var(--sc-good);
+}
+#depth_column .rs-req .no b {
+  color: var(--sc-bad);
+}
+#depth_column .rs-req .note {
+  color: var(--dc-muted);
+}
+
+/* Z near-black square vanishes on the dark panel without an outline. */
+body.dark-mode #depth_column .rs-sw {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+}

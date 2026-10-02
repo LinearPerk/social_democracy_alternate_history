@@ -5,6 +5,7 @@ tags: govt_affairs, cabinet
 on-arrival: social_welfare_timer = 10; month_actions += 1
 view-if: spd_in_government = 1 and social_welfare_timer = 0
 card-image: img/portraits/JuchaczMarie.jpg
+subtitle: Spending on unemployment insurance, healthcare, and old-age care.
 
 = Social Welfare Policy
 

@@ -6,6 +6,7 @@ on-arrival: education_science_timer += 9; month_actions += 1
 card-image: img/portraits/EinsteinAlbert.jpg
 go-to: ed_menu
 tags: govt_affairs, cabinet
+subtitle: Education policy, a field shared between the states and the central government.
 
 # options:
 # - fund research (basic science research at the KWI, medical research, applied and industrial research to benefit Germany's economy)
@@ -26,7 +27,9 @@ tags: govt_affairs, cabinet
 
 = Education and Science
 
-Education in Germany is an area of mixed responsibility between the state governments and the central government. The Weimar Constitution claims that schools are the domain of the central government, but in practice much of it is left to the states, as the Reichstag has historically been unable to pass an education law. Currently, with our control of Prussia and the Chancellorship, we can try to set policy for a large part of the country.
+{!<span class="depth-summary">!}The Weimar Constitution lets the central government set the principles of schooling, but in practice schools are left to the states, as the Reichstag has historically been unable to pass an education law. With Prussia and the Chancellorship, the SPD can try to set policy for a large part of the country.{!</span>!}
+
+{!<span class="depth">!}Education in Germany is an area of mixed responsibility between the state governments and the central government. The Weimar Constitution gives the central government the power to set the principles of schooling, but in practice schools are left to the states, as the Reichstag has historically been unable to pass an education law. Currently, with its control of Prussia and the Chancellorship, the SPD can try to set policy for a large part of the country.{!</span>!}
 
 [? if major_curriculum: Current educational curriculum - [+ major_curriculum +], [+ minor_curriculum +] ?]
 

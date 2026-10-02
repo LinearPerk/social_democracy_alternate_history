@@ -6,6 +6,7 @@ on-arrival: iron_front_timer = 7; month_actions += 1; rb_militarization_cost = 2
 card-image: img/iron_front.png
 frequency: 200
 tags: party_affairs, antifascism
+subtitle: Using the Iron Front, our antifascist coordination front.
 
 = The Iron Front
 

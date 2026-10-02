@@ -7,7 +7,9 @@ new-page: true
 
 = Gustav Radbruch
 
-Gustav Radbruch is a renowned legal scholar and long-time SPD justice minister.
+{!<span class="depth-summary">!}A legal scholar who has twice been SPD justice minister.{!</span>!}
+
+{!<span class="depth">!}Gustav Radbruch is a renowned legal scholar who has twice been SPD justice minister.{!</span>!}
 
 
 - @judiciary_
