@@ -3,9 +3,9 @@ new-page: true
 is-card: true
 tags: party_affairs
 view-if: shuffle_leadership_timer = 0 and difficulty >= 0
-on-arrival: month_activities += 1; shuffle_leadership_timer = 8;
+on-arrival: month_actions += 1; shuffle_leadership_timer = 8;
 card-image: img/vorwarts_2.jpg
-go-to: rm_main
+go-to: rm_main if shuffle_via_neo = 1
 
 Changing the leadership of the party is painful, but perhaps it is necessary to adapt to changing circumstances.
 
@@ -21,6 +21,7 @@ Removing advisors will increase dissent from their faction of the party, while s
 
 @rm_main
 title: Remove advisors.
+on-arrival: shuffle_via_neo = 0
 tags: center_advisor, left_advisor, reformist_advisor, labor_advisor, neorev_advisor, nonfactional_advisor 
 frequency: 1
 
@@ -345,7 +346,7 @@ Rudolf Hilferding is now an advisor.
 title: Otto Wels
 subtitle: Otto Wels is a long-time party organizer and member of the leadership, serving under Friedrich Ebert. {!<br><br>!}Actions -  Clear the Agenda, Party Discipline, Emergency Fundraising
 is-card: true
-card-image: img/portraits/WelsRudolf.jpg
+card-image: img/portraits/WelsOtto.jpg
 tags: center_advisor
 view-if: wels_advisor = 0 and n_advisors < 3 and centrists_resign = 0
 on-arrival: wels_advisor = 1; n_advisors += 1

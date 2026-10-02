@@ -207,6 +207,9 @@ blockquote + blockquote.attribution {
   float: left;
   left: 0.4em;
 }
+#stats_sidebar.sidebar-hidden {
+  display: none;
+}
 .tools.right {
   float: right;
   right: 0.4em;

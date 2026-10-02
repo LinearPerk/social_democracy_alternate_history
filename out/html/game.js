@@ -228,6 +228,12 @@
 
   // TODO: have some code for tabbed sidebar browsing.
   window.updateSidebar = function() {
+      var sidebar = document.getElementById('stats_sidebar');
+      if (!dendryUI.dendryEngine.state.qualities.started) {
+          sidebar.classList.add('sidebar-hidden');
+          return;
+      }
+      sidebar.classList.remove('sidebar-hidden');
       $('#qualities').empty();
       var scene = dendryUI.game.scenes[window.statusTab];
       dendryUI.dendryEngine._runActions(scene.onArrival);
