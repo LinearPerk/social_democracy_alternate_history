@@ -10,8 +10,10 @@ for (var c of Q.classes) {
         class_votes += Q[c+'_'+party];
     }
     for (var party of Q.parties) {
-        Q[c + '_' + party + '_normalized'] = 100*Q[c+'_'+party]/class_votes;
-        Q[c + '_' + party + '_display'] = Math.round(100*Q[c+'_'+party]/class_votes);
+        // a class with no support for any party contributes nothing, not NaN
+        var class_share = class_votes > 0 ? 100*Q[c+'_'+party]/class_votes : 0;
+        Q[c + '_' + party + '_normalized'] = class_share;
+        Q[c + '_' + party + '_display'] = Math.round(class_share);
     }
 }
 
@@ -39,14 +41,21 @@ for (var party of Q.parties) {
 // 3. Round to integers
 // TODO: round to 1 decimal instead of rounding to integers
 // to do that, we multiply party_normalized*1000 and divide the rounded number by 10.
+// Rounding each party alone can leave the total at 99 or 101, so integer
+// mode uses largest-remainder rounding when the state column's model is loaded.
+var fractions = {};
 for (var party of Q.parties) {
     Q[party+'_normalized'] = Q[party + '_support']/total_support;
+    fractions[party] = Q[party+'_normalized'];
+}
+var whole_votes = (window.StateColumnModel && !Q.use_decimals) ? window.StateColumnModel.roundShares(fractions, 100) : null;
+for (var party of Q.parties) {
     Q[party+'_votes_dec'] = Math.round(Q[party+'_normalized']*1000)/10;
     if (Q.use_decimals) {
         Q[party+'_votes'] = Q[party+'_votes_dec'];
         Q[party + '_votes_disp'] = Q[party+'_votes'];
     } else {
-        Q[party+'_votes'] = Math.round(Q[party+'_normalized']*100);
+        Q[party+'_votes'] = whole_votes ? whole_votes[party] : Math.round(Q[party+'_normalized']*100);
         Q[party + '_votes_disp'] = Q[party+'_votes_dec'].toFixed(1);
     }
     //Q[party+'_votes'] = Q[party+'_votes_dec'];

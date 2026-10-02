@@ -445,3 +445,13 @@ body.dark-mode {
     line-height: 1.35;
   }
 }
+
+/* Result rows on a results page: the scene's placeholder
+   (decision-column.js fills it from results.js). The block's own margin is
+   dropped so the gap above and below is set here, in the text's rhythm. */
+#content .result-rows {
+  margin: 0.9em 0 1.1em;
+}
+#content .result-rows .rr {
+  margin: 0;
+}

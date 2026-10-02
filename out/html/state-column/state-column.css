@@ -1227,3 +1227,220 @@ body.dark-mode {
 #state-column .sc-drow .sz-n.in .sc-delta {
   color: inherit;
 }
+
+/* Result rows (results.js): one readout block for a vote, in the dashboard's
+   type and rhythm. Pinned px sizes, like the state column, so the Options
+   font control doesn't move it. Not scoped to #state-column: the block also
+   sits in the text column and the depth column. The grid is badge, name,
+   bar, share, change. A Reichstag vote (.with-seats) leads with seats:
+   badge, name, seats, seat change, bar, share; compact fits a 448px text
+   column, full the depth column's 24rem minimum. */
+.rr {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  line-height: 16.9px;
+  margin: 6px 0;
+  --rr-name: 56px;
+  --rr-share: 34px;
+  --rr-chg: 70px;
+}
+.rr.full {
+  --rr-name: 44px;
+  --rr-share: 28px;
+  --rr-chg: 74px;
+}
+.rr.with-seats {
+  --rr-seats: 34px;
+  --rr-chg: 46px;
+  --rr-share: 38px;
+}
+.rr.full.with-seats {
+  --rr-name: 42px;
+  --rr-share: 34px;
+}
+/* A list of candidates has longer names than party abbreviations. */
+.rr.wide-names {
+  --rr-name: 84px;
+}
+.rr.full.wide-names {
+  --rr-name: 72px;
+}
+.rr .rr-head,
+.rr .rr-row {
+  display: grid;
+  grid-template-columns: 30px var(--rr-name) 1fr var(--rr-share) var(--rr-chg);
+  gap: 4px;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+.rr.with-seats .rr-head,
+.rr.with-seats .rr-row {
+  grid-template-columns: 30px var(--rr-name) var(--rr-seats) var(--rr-chg) 1fr var(--rr-share);
+}
+.rr .rr-head {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sc-muted);
+  white-space: nowrap;
+  padding-bottom: 2px;
+}
+.rr .rr-head .rr-bar {
+  grid-column: 3 / span 2;
+  position: static;
+  height: auto;
+  background: none;
+}
+.rr .rr-head .rr-share {
+  display: none;
+}
+.rr.with-seats .rr-head .rr-bar {
+  grid-column: auto;
+}
+.rr.with-seats .rr-head .rr-share {
+  display: block;
+}
+/* The row is a button for a party (it opens that party's entry), a div for a
+   candidate; strip the button chrome so both look alike. */
+.rr .rr-row {
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid var(--sc-line);
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+.rr button.rr-row {
+  cursor: pointer;
+}
+.rr button.rr-row:hover {
+  background: var(--sc-track);
+}
+.rr .rr-row.player {
+  background: rgba(227, 0, 15, 0.1);
+}
+body.dark-mode .rr .rr-row.player {
+  background: rgba(227, 0, 15, 0.22);
+}
+.rr .rr-row.player .rr-name,
+.rr .rr-row.player .rr-share {
+  font-weight: 700;
+}
+.rr.with-seats .rr-row.player .rr-share {
+  font-weight: 400;
+}
+.rr .rr-badge {
+  display: flex;
+  justify-content: center;
+}
+.rr .rr-badge .sc-badge {
+  min-width: 24px;
+  max-width: 30px;
+  height: 24px;
+  font-size: 13px;
+}
+.rr .rr-badge .sc-badge img {
+  height: 24px;
+  max-width: 30px;
+  object-fit: contain;
+}
+.rr .rr-name {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rr .rr-bar {
+  position: relative;
+  height: 8px;
+  background: var(--sc-track);
+  border-radius: 2px;
+}
+.rr .rr-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  min-width: 1px;
+  border-radius: 2px;
+  /* Keeps the Center Party's black fill visible on the dark theme. */
+  box-shadow: inset 0 0 0 1px var(--sc-line);
+}
+/* Where the party stood last time: a hairline taller than the bar. */
+.rr .rr-ghost {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 1px;
+  background: var(--text-color);
+  opacity: 0.6;
+}
+/* A threshold (a presidential first round's 50%): a dashed hairline as tall
+   as the ghost tick, so the two never read as one thing. */
+.rr .rr-mark {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 0;
+  border-left: 1px dashed var(--text-color);
+  opacity: 0.7;
+}
+.rr .rr-row .rr-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-color);
+}
+.rr .rr-share,
+.rr .rr-seats,
+.rr .rr-chg {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.rr .rr-seats {
+  color: var(--sc-muted);
+}
+.rr .rr-row .rr-chg {
+  font-size: 10px;
+  color: var(--sc-muted);
+}
+/* Seats and their change are the row's figures; the vote is small and muted.
+   The player's change takes the ledger's good and bad colours, the others
+   stay in the text colour. */
+.rr.with-seats .rr-row .rr-seats {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+.rr.with-seats .rr-row .rr-chg {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+.rr.with-seats .rr-row .rr-chg.same {
+  font-weight: 400;
+  color: var(--sc-muted);
+}
+.rr.with-seats .rr-row.player .rr-chg.up {
+  color: var(--sc-good);
+}
+.rr.with-seats .rr-row.player .rr-chg.down {
+  color: var(--sc-bad);
+}
+.rr.with-seats .rr-row .rr-share {
+  font-size: 11px;
+  color: var(--sc-muted);
+}
+.rr.with-seats .rr-head .rr-seats,
+.rr.with-seats .rr-head .rr-chg {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--sc-muted);
+}

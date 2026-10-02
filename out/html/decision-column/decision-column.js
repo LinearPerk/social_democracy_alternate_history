@@ -12,6 +12,10 @@
  * Choice tables: a scene named in decision-column/choice-tables.json has its
  * choice list drawn as a table (choiceTable below). Loaded in node, this file
  * exports the pure table model and renderer for the unit tests.
+ *
+ * Result placeholders: a scene writes <div data-results="name"> around a
+ * plain-text fallback, and the decoration pass fills it with the result
+ * rows (state-column/results.js) that the name stands for (resultsHtml).
  */
 (function () {
   'use strict';
@@ -445,6 +449,67 @@
     });
   }
 
+  // Result placeholders
+
+  // Name -> builder, each (ResultRows, qualities, symbols) -> html. A new
+  // vote readout adds its name here and nowhere else.
+  var RESULT_BUILDERS = {
+    reichstag: function (R, q, symbols) {
+      return R.html(R.reichstag(q), { q: q, symbols: symbols, size: 'compact', seats: true });
+    },
+    'president-round1': function (R, q, symbols) {
+      return presidentRows(R, R.president1932(q), q, symbols, true);
+    },
+    'president-round2': function (R, q, symbols) {
+      return presidentRows(R, R.president1932(q), q, symbols, false);
+    },
+    'president-1934-round1': function (R, q, symbols) {
+      return presidentRows(R, R.president1934(q), q, symbols, true);
+    },
+    'president-1934-round2': function (R, q, symbols) {
+      return presidentRows(R, R.president1934(q), q, symbols, false);
+    }
+  };
+
+  // A presidential vote: bars on a 0-100 scale so the 50 tick of a first
+  // round sits mid-bar, and no change column (there is no last vote to
+  // compare). A second round is a plurality, so it has no tick.
+  function presidentRows(R, list, q, symbols, firstRound) {
+    return R.html(list, {
+      q: q, symbols: symbols, size: 'compact', max: 100, change: false,
+      mark: firstRound ? 50 : undefined
+    });
+  }
+
+  // The rows for a placeholder's name, or null when there is nothing to
+  // draw (an unknown name, a build without ResultRows, a builder that fails
+  // on odd qualities). The caller then leaves the scene's fallback text, so
+  // the page never shows an empty hole.
+  function resultsHtml(name, R, q, symbols) {
+    if (!R || !Object.prototype.hasOwnProperty.call(RESULT_BUILDERS, name)) return null;
+    try {
+      return RESULT_BUILDERS[name](R, q, symbols) || null;
+    } catch (err) {
+      console.error('result rows', name, err);
+      return null;
+    }
+  }
+
+  // Fills each placeholder once; the mark keeps the observer's next pass
+  // (which our own write triggers) from redrawing it.
+  function decorateResults(content) {
+    var holes = content.querySelectorAll('[data-results]:not([data-results-filled])');
+    if (!holes.length) return;
+    var e = engine();
+    var q = e && e.state && e.state.qualities;
+    var symbols = window.StateColumn && window.StateColumn.symbols();
+    Array.prototype.forEach.call(holes, function (hole) {
+      var html = resultsHtml(hole.getAttribute('data-results'), window.ResultRows, q, symbols);
+      hole.setAttribute('data-results-filled', html === null ? 'fallback' : 'rows');
+      if (html !== null) hole.innerHTML = html;
+    });
+  }
+
   function decorate() {
     var content = document.getElementById('content');
     if (!content) return;
@@ -453,12 +518,15 @@
     decorateHand(content);
     decorateAdvisors(content);
     decorateChoiceTable(content);
+    decorateResults(content);
   }
 
   var api = {
     tableModel: tableModel,
     renderChoiceTable: renderChoiceTable,
     choiceTable: choiceTable,
+    resultsHtml: resultsHtml,
+    RESULT_BUILDERS: RESULT_BUILDERS
   };
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (typeof window === 'undefined') return;

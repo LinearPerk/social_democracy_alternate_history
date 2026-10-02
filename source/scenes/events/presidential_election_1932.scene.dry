@@ -264,6 +264,8 @@ go-to: hindenburg_wins if hindenburg_majority == 1; thalmann_wins if thalmann_ma
 
 Results:
 
+{!<div class="result-rows" data-results="president-round!}[+ election_round +]{!">!}
+
 Hindenburg - [+ hindenburg_votes_disp +]%
 
 [+ nsdap_candidate +] - [+ hitler_votes_disp +]%
@@ -271,6 +273,8 @@ Hindenburg - [+ hindenburg_votes_disp +]%
 [? if kpd_support_braun == 0 : Thälmann - [+ thalmann_votes_disp +]% ?]
 
 [? if braun_campaign > 0 : Braun - [+ braun_votes_disp +]% ?]
+
+{!</div>!}
 
 @no_majority_round1
 on-arrival: hitler_support_hindenburg = 1 if (braun_plurality or thalmann_plurality)

@@ -437,6 +437,8 @@ go-to: r2_start if round = 1 and not has_majority; election_end if round > 1; r1
 
 Election results:
 
+{!<div class="result-rows" data-results="president-1934-round!}[+ round +]{!">!}
+
 [? if Hitler_running : Hitler - [+ Hitler_votes_disp +]% ?]
 [? if Goring_running : Göring - [+ Goring_votes_disp +]% ?]
 
@@ -458,6 +460,8 @@ Election results:
 [? if Einstein_running : Einstein - [+ Einstein_votes_disp +]% ?]
 [? if Ossietzky_running : Ossietzky - [+ Ossietzky_votes_disp +]% ?]
 [? if Mann_running : Mann - [+ Mann_votes_disp +]% ?]
+
+{!</div>!}
 
 @r2_start
 on-arrival: {!

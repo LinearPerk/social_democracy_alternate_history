@@ -66,12 +66,20 @@ for (var party of Q.parties) {
 }
 // calculate new party sum if electoral reform
 if (Q.electoral_threshold && Q.electoral_threshold > 0) {
+    // integer mode: largest-remainder rounding so the survivors still sum to 100
+    var kept = {};
+    for (var party of Q.parties) {
+        if (Q[party + '_r'] > 0) {
+            kept[party] = Q[party + '_r']/new_party_sum;
+        }
+    }
+    var kept_whole = (window.StateColumnModel && !Q.use_decimals && new_party_sum > 0) ? window.StateColumnModel.roundShares(kept, 100) : null;
     for (var party of Q.parties) {
         if (Q[party + '_r'] > 0) {
             if (Q.use_decimals) {
                 Q[party + '_r'] = Math.round(Q[party + '_r']*1000/new_party_sum)/10;
             } else {
-                Q[party + '_r'] = Math.round(Q[party + '_r']*100/new_party_sum);
+                Q[party + '_r'] = kept_whole ? kept_whole[party] : Math.round(Q[party + '_r']*100/new_party_sum);
             }
         }
         if (Q.use_decimals) {
@@ -179,132 +187,67 @@ var election_result = {'date': new Date(Q.year, Q.month - 1)};
 for (var party of Q.parties) {
     election_result[party] = Q[party + '_r'];
 }
+// each group's party shares, kept so the next election can show who moved
+// (plain numbers in plain objects, since a save turns the record into JSON)
+election_result.groups = {};
+for (var c of Q.classes) {
+    election_result.groups[c] = {};
+    for (var party of Q.parties) {
+        election_result.groups[c][party] = Math.round(Q[c + '_' + party + '_normalized'] * 10) / 10;
+    }
+}
 Q.election_records.push(election_result);
+
+Q.reichstag_seats = (window.StateColumnModel ? window.StateColumnModel.houseAt(Q.year, Q.month) : 0);
+// The SPD's seats and what they changed by, for the headline below. Without
+// the model the flag stays 0 and the headline keeps the vote-share sentence.
+Q.spd_seats_known = 0;
+Q.spd_seat_line = '';
+if (window.ResultRows && window.StateColumnModel) {
+    var spd_move = window.ResultRows.partySeats(Q, 'spd');
+    Q.spd_seats = spd_move.seats;
+    Q.spd_seat_change = spd_move.change === null ? 0 : spd_move.change;
+    Q.spd_seats_known = 1;
+    Q.spd_seat_line = spd_move.seats + (spd_move.seats === 1 ? ' seat' : ' seats');
+    if (spd_move.change !== null) {
+        var seat_change_words = spd_move.change > 0 ? spd_move.change + ' more than before' :
+            (spd_move.change < 0 ? (-spd_move.change) + ' fewer than before' : 'the same as before');
+        Q.spd_seat_line += ', ' + seat_change_words + ',';
+    }
+}
 !}
 on-departure: nazi_urgency = 1 if (nazi_urgency == 0 and nsdap_r >= 15)
-on-display: {!
-data = [
-    {
-        "id": "kpd",
-        "legend": "KPD",
-        "name": "KPD",
-        "seats": Math.round(Q.kpd_r*5),
-    }
-];
-if (Q.sapd_formed && Q.sapd_r) {
-    data.push({
-            "id": "sapd",
-            "legend": "SAPD",
-            "name": "SAPD",
-            "seats": Math.round(Q.sapd_r*5),
-            });
-}
-data = data.concat([
-    {
-        "id": "spd",
-        "legend": "SPD",
-        "name": "SPD",
-        "seats": Math.round(Q.spd_r*5),
-    },
-    {
-        "id": "ddp",
-        "legend": Q.ddp_name,
-        "name": Q.ddp_name,
-        "seats": Math.round(Q.ddp_r*5),
-    },
-    {
-        "id": "z",
-        "legend": "Center",
-        "name": "Center",
-        "seats": Math.round((Q.z_r - 3)*5),
-    },
-    {
-        "id": "bvp",
-        "legend": "BVP",
-        "name": "BVP",
-        "seats": Math.round(3*5),
-    },
-    {
-        "id": "dvp",
-        "legend": "DVP",
-        "name": "DVP",
-        "seats": Math.round(Q.dvp_r*5),
-    },
-    {
-        "id": "other",
-        "legend": "Other",
-        "name": "Other",
-        "seats": Math.round(Q.other_r*5),
-    },
-    {
-        "id": "dnvp",
-        "legend": "DNVP",
-        "name": "DNVP",
-        "seats": Math.round(Q.dnvp_r*5),
-    },
-    {
-        "id": "nsdap",
-        "legend": "NSDAP",
-        "name": "NSDAP",
-        "seats": Math.round(Q.nsdap_r*5),
-    },
-]);
-
-if (window && d3) {
-    var width = 500; 
-    var height = 500;
-    var screenWidth = document.getElementById('content').offsetWidth;
-    if (screenWidth < width - 50) {
-        width = screenWidth - 50; 
-        height = width;
-        document.getElementById("reichstag").style.height = screenWidth/2 + "px";
-    } 
-
-    var parliament = d3.parliament();
-    parliament.width(width).height(height).innerRadiusCoef(0.4);
-    parliament.enter.fromCenter(true).smallToBig(true);
-    parliament.exit.toCenter(false).bigToSmall(true);
-    d3.select("#reichstag").datum(data).call(parliament);
-}
-!}
 go-to: coalition_menu
 
 = Election results
 
-{!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
+[? if spd_seats_known == 1 : The SPD won [+ spd_seat_line +] with [+ spd_r_disp +]% of the vote. ?][? if spd_seats_known == 1 and largest_party == "SPD" : It is the largest party in the Reichstag. ?][? if spd_seats_known == 1 and largest_party != "SPD" : The [+ largest_party +] is the largest party. ?][? if spd_seats_known == 0 and largest_party == "SPD" : The SPD won [+ spd_r_disp +]% of the vote, the most of any party, a change of [+ str_change_spd +] points. ?][? if spd_seats_known == 0 and largest_party != "SPD" : The [+ largest_party +] took the most votes. The SPD won [+ spd_r_disp +]%, a change of [+ str_change_spd +] points. ?]
 
-{!<table>!} 
-{!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_r +]%** {!</td><td>!} **[+ str_change_spd +]** {!</td></tr>!}
+[? if reichstag_seats > 0 : The new Reichstag has [+ reichstag_seats +] seats: one for every 60,000 votes, so the house grows with turnout. ?]
 
-[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td><td>!} [+ str_change_sapd +] {!</td></tr>!} ?]
+{!<div class="result-rows" data-results="reichstag">!}
 
-{!<tr><td><div class="box" style='background-color:#8B0000'> </div> !}KPD: {!</td><td>!} [+ kpd_r +]% {!</td><td>!} [+ str_change_kpd +] {!</td></tr>!}
+SPD: [+ spd_r_disp +]%
 
-{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} [+ ddp_name +]: {!</td><td>!} [+ ddp_r +]% {!</td><td>!} [+ str_change_ddp +] {!</td></tr>!}
+[? if sapd_formed : SAPD: [+ sapd_r_disp +]% ?]
 
-{!<tr><td><div class="box" style='background-color:#000'> </div> !} Z: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td><td>!} [+ str_change_z +] {!</td></tr>!}
+KPD: [+ kpd_r_disp +]%
 
-{!<tr><td><div class="box" style='background-color:#69A2BE'> </div> !} BVP: {!</td><td>!} 3% {!</td><td>!} 0 {!</td></tr>!}
+[+ ddp_name +]: [+ ddp_r_disp +]%
 
-{!<tr><td><div class="box" style='background-color:#D5AC27'> </div> !} DVP: {!</td><td>!} [+ dvp_r +]% {!</td><td>!} [+ str_change_dvp +] {!</td></tr>!}
- 
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_r +] % {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
+Z: [+ z_minus_bvp_r +]%
 
-{!<tr><td><div class="box" style='background-color:#3f7bc1'> </div> !} DNVP: {!</td><td>!} [+ dnvp_r +]% {!</td><td>!} [+ str_change_dnvp +] {!</td></tr>!}
+BVP: 3%
 
-{!<tr><td><div class="box" style='background-color:#954B00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_r +]% {!</td><td>!} [+ str_change_nsdap +] {!</td></tr>!}
-{!</table>!}
+DVP: [+ dvp_r_disp +]%
 
-**Potential coalitions:**
+Others: [+ other_r_disp +]%
 
-Weimar Coalition (SPD + Z + [+ ddp_name +]): [+ weimar_coalition +]%
+DNVP: [+ dnvp_r_disp +]%
 
-Grand Coalition (SPD + Z + BVP + [+ ddp_name +] + DVP): [+ grand_coalition +]%
+NSDAP: [+ nsdap_r_disp +]%
 
-Bourgeois Coalition (Z + BVP + [+ ddp_name +] + DVP + Others): [+ bourgeois_coalition +]%
-
-Right-wing Coalition (Z + BVP + DVP + Others + DNVP): [+ right_coalition +]%
+{!</div>!}
 
 [? if nazi_urgency <= 1 and nsdap_r >= 15 : The rapid rise in NSDAP votes is extremely worrying. Many had believed that the party was moribund; now, some of us consider it to be the greatest threat to democracy in Germany. ?]
 

@@ -1,0 +1,283 @@
+/*
+ * Election entry: styles for election-entry.js. The hemicycle is the state
+ * column's drawing (view.js) at the depth column's width, so the rules the
+ * state column scopes to itself are repeated here for the drawing's parts.
+ * The drawing scales whole (its viewBox is fixed), so the dots and the centre
+ * label keep their proportions at any width. Classes are prefixed el-.
+ */
+
+#depth_column .el-hemi {
+  max-width: 30rem;
+  margin: 0 auto 0.4em;
+}
+#depth_column .el-hemi .sc-hemi {
+  display: block;
+  width: 100%;
+}
+#depth_column .el-hemi .sc-party-seats {
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+#depth_column .el-hemi .sc-party-seats.dim {
+  opacity: 0.2;
+}
+#depth_column .el-hemi .sc-majline {
+  stroke: var(--text-color);
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+  opacity: 0.6;
+}
+#depth_column .el-hemi .sc-housenum {
+  text-anchor: middle;
+  font: 700 18px 'Jost', sans-serif;
+  fill: var(--text-color);
+}
+#depth_column .el-hemi .sc-houselbl {
+  text-anchor: middle;
+  font: 500 9px 'Jost', sans-serif;
+  fill: var(--dc-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+#depth_column .el-hemi .sc-majlbl {
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+/* The Center Party's near-black dots vanish on the dark panel without an edge. */
+body.dark-mode #depth_column .el-hemi circle {
+  stroke: rgba(255, 255, 255, 0.35);
+  stroke-width: 0.5;
+}
+
+/* The seats arrive party by party, left to right: the groups are in seating
+   order, one step apart. "backwards" holds the first frame through the delay
+   and then lets the ordinary rules (the dim on hover) apply. A redraw part
+   way through starts the fade where it had got to (--el-elapsed). */
+@keyframes el-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+#depth_column .el-enter .sc-party-seats {
+  animation: el-fade 200ms ease-out backwards;
+  animation-delay: calc(var(--n, 0) * 55ms - var(--el-elapsed, 0ms));
+}
+#depth_column .el-enter .sc-party-seats:nth-child(2) { --n: 1; }
+#depth_column .el-enter .sc-party-seats:nth-child(3) { --n: 2; }
+#depth_column .el-enter .sc-party-seats:nth-child(4) { --n: 3; }
+#depth_column .el-enter .sc-party-seats:nth-child(5) { --n: 4; }
+#depth_column .el-enter .sc-party-seats:nth-child(6) { --n: 5; }
+#depth_column .el-enter .sc-party-seats:nth-child(7) { --n: 6; }
+#depth_column .el-enter .sc-party-seats:nth-child(8) { --n: 7; }
+#depth_column .el-enter .sc-party-seats:nth-child(9) { --n: 8; }
+#depth_column .el-enter .sc-party-seats:nth-child(10) { --n: 9; }
+@media (prefers-reduced-motion: reduce) {
+  #depth_column .el-enter .sc-party-seats {
+    animation: none;
+  }
+  #depth_column .el-hemi .sc-party-seats {
+    transition: none;
+  }
+}
+
+/* The lead line: the player's seats and what they changed by, the largest
+   type in the view. Good and bad take the dashboard's colours. */
+#depth_column .el-lead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  margin: 0 0 0.3em;
+  font: 700 26px/1.2 'Jost', sans-serif;
+  color: var(--text-color);
+}
+#depth_column .el-lead.good {
+  color: var(--sc-good);
+}
+#depth_column .el-lead.bad {
+  color: var(--sc-bad);
+}
+#depth_column .el-lead-badge {
+  display: flex;
+  flex: none;
+}
+#depth_column .el-lead-text {
+  min-width: 0;
+}
+
+/* Gains and losses: one bar per party from a centre line, gains right and
+   losses left, the largest change filling half the track. The number sits at
+   the bar's end, in the margin the track leaves on each side. */
+#depth_column .el-gl {
+  margin: 0.3em 0 0.9em;
+}
+#depth_column .el-gl .dc-sub {
+  margin-bottom: 2px;
+}
+#depth_column .el-gl-row {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-color);
+  font: 12px 'Jost', sans-serif;
+  text-align: left;
+  cursor: pointer;
+}
+#depth_column .el-gl-row:hover {
+  background: var(--dc-track);
+}
+#depth_column .el-gl-name {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#depth_column .el-gl-track {
+  position: relative;
+  height: 12px;
+  margin: 0 30px;
+}
+#depth_column .el-gl-axis {
+  position: absolute;
+  left: 50%;
+  top: -5px;
+  bottom: -5px;
+  width: 0;
+  border-left: 1px solid var(--text-color);
+  opacity: 0.5;
+}
+#depth_column .el-gl-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-width: 1px;
+  /* Keeps the Center Party's black fill visible on the dark theme. */
+  box-shadow: inset 0 0 0 1px var(--dc-rule);
+}
+#depth_column .el-gl-fill.up {
+  border-radius: 0 2px 2px 0;
+}
+#depth_column .el-gl-fill.down {
+  border-radius: 2px 0 0 2px;
+}
+#depth_column .el-gl-num {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+#depth_column .el-note {
+  margin: 0.6em 0 0;
+  font: 12px/1.45 'Jost', sans-serif;
+  color: var(--dc-muted);
+}
+
+/* The "Last election" link in the Reichstag entry, set like the entries'
+   other links. */
+#depth_column .rs-last {
+  margin: 0.6em 0 0;
+  font: 0.9em 'Jost', sans-serif;
+}
+#depth_column .rs-lastlink {
+  padding: 0;
+  font: inherit;
+  color: var(--dc-link);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+#depth_column .rs-lastlink:hover {
+  text-decoration: underline;
+}
+
+/* Coalitions: one button per government. The bar is on the house's scale, so
+   the bars compare; the tick marks the majority. The bar is tall enough to
+   read, and the word gives the answer the tick shows, for those who do not
+   see it. */
+#depth_column .el-coalitions .dc-sub {
+  margin-top: 1.1em;
+}
+#depth_column .el-co {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 4px;
+  padding: 4px 8px 6px;
+  text-align: left;
+  font: 0.9em 'Jost', sans-serif;
+  color: var(--text-color);
+  background: none;
+  border: 1px solid var(--dc-rule);
+  border-radius: 4px;
+  cursor: pointer;
+}
+#depth_column .el-co:hover {
+  background: var(--dc-track);
+}
+#depth_column .el-co.on {
+  border-color: var(--text-color);
+  background: var(--dc-track);
+}
+#depth_column .el-co-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.6em;
+  margin-bottom: 3px;
+}
+#depth_column .el-co-name {
+  font-weight: 600;
+}
+#depth_column .el-co-word {
+  color: var(--dc-muted);
+}
+#depth_column .el-co.ok .el-co-word {
+  color: var(--text-color);
+}
+#depth_column .el-co-bar {
+  position: relative;
+  display: flex;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--dc-track);
+}
+#depth_column .el-co-seg {
+  height: 100%;
+}
+#depth_column .el-co-seg:first-child {
+  border-radius: 3px 0 0 3px;
+}
+#depth_column .el-co-tick {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 0;
+  border-left: 2px solid var(--text-color);
+}
+body.dark-mode #depth_column .el-co-tick {
+  /* A light line over the track and the dark Center Party's segment. */
+  border-left-color: rgba(255, 255, 255, 0.9);
+}
+
+/* By group: the Polls bar for each group, then what moved. */
+#depth_column .el-groups .dc-sub {
+  margin-top: 0.7em;
+}
+#depth_column .el-groups > .dc-sub:first-child {
+  margin-top: 1.4em;
+}
+#depth_column .el-move {
+  margin-top: 3px;
+  font: 12px 'Jost', sans-serif;
+  color: var(--dc-muted);
+}
