@@ -1,0 +1,447 @@
+/*
+ * Decision column: the monthly hub (Decks, Hand, Advisors) as decision-column.js
+ * decorates it. Rules start at #content so they win over game.css's card
+ * rules and layout.css's compact-hub sizes by specificity, not by load order.
+ */
+
+body {
+  --dc-line: rgba(0, 0, 0, 0.25);
+  --dc-muted: rgba(0, 0, 0, 0.6);
+}
+
+/* Type. The column's text follows the state column's house style: the
+   game's serif for reading at 16px on a 1.55 line, Jost small caps with
+   0.12em tracking for headings and labels. upstream sets #content at 1.1em
+   (17.6px) and the Options control resizes it inline, so the reading size is
+   a fraction of whatever #content is: every block that is a direct child of
+   #content takes --dc-k of it, which is 16px at the default, and the sizes
+   below are written against that 16px. A size on a direct child (the hub's
+   headings) has to undo the fraction itself, since its em still refers to
+   #content. */
+#content {
+  --dc-k: 0.9091;
+}
+#content > :not(h1):not(hr) {
+  font-size: calc(var(--dc-k) * 1em);
+  line-height: 1.55;
+}
+#content > p,
+#content > blockquote {
+  max-width: 34rem;
+}
+#content > p {
+  margin: 0 0 0.6em;
+  text-indent: 0;
+}
+/* Choices read as buttons: 0.3em more room than upstream's 0.5em. */
+#content ul.choices li {
+  padding: 0.8em;
+}
+body.dark-mode {
+  --dc-line: rgba(255, 255, 255, 0.28);
+  --dc-muted: rgba(255, 255, 255, 0.62);
+}
+
+/* Section headings: small caps centred between thin rules. The engine draws
+   an <hr> above each heading; the rules here replace it. */
+#content hr:has(+ p.deck-description),
+#content hr:has(+ p.hand-description),
+#content hr:has(+ p.pinned-text-description) {
+  display: none;
+}
+#content p.deck-description,
+#content p.hand-description,
+#content p.pinned-text-description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7em;
+  margin: 0.8em 0 0.8em;
+  text-indent: 0;
+  font: 500 calc(var(--dc-k) * 0.6875em)/1.3 'Jost', sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+#content p.deck-description::before,
+#content p.deck-description::after,
+#content p.hand-description::before,
+#content p.hand-description::after,
+#content p.pinned-text-description::before,
+#content p.pinned-text-description::after {
+  content: '';
+  flex: 1 1 0;
+  border-top: 1px solid var(--dc-line);
+}
+/* The Advisors status: a small muted chip beside the heading. */
+#content .dc-chip {
+  padding: 0.05em 0.7em;
+  border: 1px solid var(--dc-line);
+  border-radius: 999px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  white-space: nowrap;
+  color: var(--dc-muted);
+}
+#content .dc-chip-ready {
+  border-color: currentColor;
+  color: var(--text-color);
+}
+
+/* Rows: cards centred in the column, one even gap between them. Captions
+   centre under their cards. Each li is exactly as wide as a card (captions
+   wrap inside it), so the gaps between cards are even. The column's content
+   box is 413px to 459px wide, so a row holds three cards; a row of four
+   shrinks them to fit (below), and five or more wrap, each line centred. The
+   compact hub's right margin goes, since it would tilt a centred row. */
+#content ul.decks,
+#content ul.hand,
+#content ul.pinned-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.7em 0.9em;
+  margin: 0.5em 0 0;
+}
+#content li.deck,
+#content li.card-in-hand,
+#content li.pinned-card {
+  margin: 0;
+  width: 116px;
+  max-width: 116px;
+  text-align: center;
+}
+/* A card row of exactly four (easy difficulty's hand and advisors) shares
+   one line. The narrowest content box is 413px, so the cards shrink to 97px
+   (art in the same 4:5 ratio) with 8px gaps: 4 x 97 + 3 x 8 = 412px. Rows
+   of one to three cards keep 116px, and five or more keep wrapping. Below
+   800px the stacked column is wide enough for the full size. Captions overhang
+   by 4px a side here, so two neighbours never meet across the 8px gap. */
+@media screen and (min-width: 800px) {
+  #content :is(ul.decks, ul.hand, ul.pinned-cards):has(> li:nth-child(4):last-child) {
+    column-gap: 8px;
+  }
+  #content :is(ul.decks, ul.hand, ul.pinned-cards):has(> li:nth-child(4):last-child) > li {
+    width: 97px;
+    max-width: 97px;
+  }
+  #content :is(ul.decks, ul.hand, ul.pinned-cards):has(> li:nth-child(4):last-child) a.card,
+  #content :is(ul.decks, ul.hand, ul.pinned-cards):has(> li:nth-child(4):last-child) .dc-ghost {
+    width: 81px;
+    height: 101.25px;
+  }
+  #content :is(ul.decks, ul.hand, ul.pinned-cards):has(> li:nth-child(4):last-child) .card-img {
+    width: 81px;
+    height: 101.25px;
+  }
+  #content :is(ul.decks, ul.hand, ul.pinned-cards):has(> li:nth-child(4):last-child) div.blank-card {
+    width: 97px;
+    height: 118px;
+  }
+  /* A hover tip opens to the card's right, which for the last two cards in
+     the row runs past the column and adds a sideways scrollbar to it. They
+     open to the left instead. */
+  #content :is(ul.decks, ul.hand, ul.pinned-cards):has(> li:nth-child(4):last-child) > li:nth-child(n+3) .card-tooltip {
+    left: auto;
+    right: 105%;
+  }
+  #content :is(ul.decks, ul.hand, ul.pinned-cards):has(> li:nth-child(4):last-child) .card-caption,
+  #content :is(ul.decks, ul.hand, ul.pinned-cards):has(> li:nth-child(4):last-child) .dc-note {
+    margin-left: -4px;
+    margin-right: -4px;
+  }
+}
+/* Captions are 14px serif. They may overhang the card by 10px a side, so
+   "Government Affairs" stays on one line; the rows' gaps are wider than
+   the two overhangs of any pair of captions that long. */
+#content .card-caption {
+  font-size: 0.875em;
+  line-height: 1.2;
+  margin: 0.3em -10px 0;
+}
+/* Caption and note of a card that carries them; the note is smaller and
+   muted, and the faction label takes its faction's colour, darkened (or, in
+   dark mode, lightened) toward the text colour to stay readable. */
+#content .dc-note,
+#content .dc-faction {
+  display: block;
+  line-height: 1.25;
+  margin-top: 0.15em;
+}
+/* The note under a greyed deck is a second caption line: the caption's own
+   14px, muted. */
+#content .dc-note {
+  font-size: 0.875em;
+  margin-left: -10px;
+  margin-right: -10px;
+  color: var(--dc-muted);
+}
+/* The faction word is a label: 11px Jost small caps, the house sub-heading. */
+#content .dc-faction {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6875em;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--dc-faction) 62%, var(--text-color));
+}
+
+/* Cards that can be played lift a little. Upstream's hover moved the card
+   with left/top; a transform does the same without shifting layout. */
+#content a.card {
+  left: 0;
+  top: 0;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+#content a.card:hover,
+#content a.card:focus-visible {
+  left: 0;
+  top: 0;
+  transform: translateY(-3px);
+  box-shadow: 4px 8px 14px rgba(0, 0, 0, 0.3);
+}
+#content a.card:focus-visible {
+  outline: 3px solid var(--link-color);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  #content a.card {
+    transition: none;
+  }
+  #content a.card:hover,
+  #content a.card:focus-visible {
+    transform: none;
+  }
+}
+
+/* Unavailable decks (drawn by the engine, or the Government Affairs
+   stand-in): greyed, inert, no lift. */
+#content li.unavailable-card {
+  background: none !important;
+  cursor: default !important;
+}
+#content li.unavailable-card a.card {
+  pointer-events: none;
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+#content li.unavailable-card .card-img {
+  filter: grayscale(1);
+  opacity: 0.4;
+}
+#content li.unavailable-card .card-caption {
+  color: var(--dc-muted);
+}
+/* The stand-in has no link, so it takes the card frame itself (as upstream's
+   a.card and the compact hub's size give it). */
+#content .dc-ghost {
+  display: inline-block;
+  position: relative;
+  box-sizing: content-box;
+  width: 100px;
+  height: 125px;
+  border: 8px solid var(--card-border-color);
+  vertical-align: bottom;
+  cursor: default;
+}
+#content .dc-ghost .card-img {
+  display: block;
+}
+
+/* Empty hand slot: a dashed outline the size of a card. */
+#content div.blank-card {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 116px;
+  height: 141px;
+  padding: 0.5em;
+  border: 2px dashed var(--dc-line);
+  background: none;
+  text-align: center;
+}
+#content .dc-empty {
+  font-size: 0.875em;
+  line-height: 1.25;
+  color: var(--dc-muted);
+}
+
+/* Advisors: a bar in the faction's colour along the portrait's bottom edge. */
+#content .dc-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6px;
+  background: var(--dc-faction);
+}
+
+/* The newspaper rule: a double line above and below. A plain class, so any
+   block can take it (the choice table does). #876 is
+   game.css's own choice-list border, a fixed value that works in both
+   themes. */
+.rule-double {
+  border-top: 3px double #876;
+  border-bottom: 3px double #876;
+}
+
+/* Choice tables (decision-column.js, choice-tables.json): a scene's choice
+   list drawn as a table. The table sits in one li of the engine's ul.choices,
+   so the engine's box, hover wash and row padding are undone here; the
+   table draws its own rules and washes. */
+body {
+  --ct-wash: rgba(0, 0, 0, 0.07);
+}
+body.dark-mode {
+  --ct-wash: rgba(255, 255, 255, 0.09);
+}
+#content ul.choices.has-choice-table {
+  border: 0;
+  border-radius: 0;
+  margin: 0.6em 0 0;
+}
+#content ul.choices.has-choice-table li.choice-table-holder {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: default;
+}
+/* Three columns: the decision column is 413 to 459px wide inside 26px of
+   padding, too narrow for eight columns, so a table with detail columns takes
+   18px of that padding on each side. A summary-only table fits the text. */
+@media screen and (min-width: 1300px) {
+  #content ul.choices.has-choice-table:has(.choice-table:not(.ct-summary-only)) {
+    margin-left: -18px;
+    margin-right: -18px;
+  }
+}
+#content .choice-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125em;
+  line-height: 1.3;
+  text-indent: 0;
+}
+/* Column heads: Jost small caps, the house label. */
+#content .choice-table th {
+  padding: 0.6em 0.3em 0.5em;
+  border-bottom: 1px solid var(--dc-line);
+  font: 500 0.75em/1.2 'Jost', sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: left;
+  vertical-align: bottom;
+  color: var(--dc-muted);
+}
+#content .choice-table td {
+  padding: 0.6em 0.3em;
+  border-bottom: 1px solid var(--dc-line);
+  text-align: left;
+  vertical-align: top;
+}
+#content .choice-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+#content .choice-table th.ct-mode,
+#content .choice-table td.ct-mode {
+  padding-left: 0.7em;
+}
+/* A narrow Mode column (width: 1% makes it shrink to its longest word), so
+   the room goes to the columns that hold the figures. */
+#content .choice-table th.ct-mode {
+  width: 1%;
+}
+#content .choice-table td.ct-mode a,
+#content .choice-table td.ct-mode .ct-main {
+  font-size: 1.15em;
+}
+#content .choice-table .ct-main,
+#content .choice-table .ct-detail {
+  display: block;
+}
+#content .choice-table td.ct-wide .ct-main {
+  white-space: nowrap;
+}
+#content .choice-table .ct-detail {
+  font-size: 0.85em;
+  line-height: 1.25;
+  color: var(--dc-muted);
+}
+#content .choice-table td.ct-mode .ct-detail {
+  font-size: 0.9em;
+}
+#content .choice-table .ct-merged {
+  font-style: italic;
+  color: var(--dc-muted);
+}
+/* Rows act as one button: the row washes on hover and is outlined when its
+   link has keyboard focus (the link itself shows no ring of its own). */
+#content .choice-table tbody tr {
+  cursor: pointer;
+}
+#content .choice-table tbody tr:hover > td {
+  background: var(--ct-wash);
+}
+#content .choice-table tbody tr:has(a:focus-visible) {
+  outline: 2px solid var(--link-color);
+  outline-offset: -2px;
+}
+#content .choice-table a:focus-visible {
+  outline: 0;
+}
+#content .choice-table tbody tr.ct-unavailable {
+  cursor: default;
+  color: var(--unavailable-color);
+}
+#content .choice-table tbody tr.ct-unavailable:hover > td {
+  background: none;
+}
+/* A note under the table, as the engine's subtitle would have read. */
+#content .choice-table-holder .ct-note {
+  margin: 0.6em 0.7em 0;
+  font-size: 0.875em;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--dc-muted);
+}
+#content .choice-table-holder .ct-note-title {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--text-color);
+}
+#content .choice-table-holder .ct-note-title::after {
+  content: ':';
+}
+/* A summary-only table (a spec with no detail columns): Mode and one line,
+   at every width. */
+#content .choice-table th.ct-summary,
+#content .choice-table td.ct-summary {
+  display: table-cell;
+}
+#content .choice-table td.ct-summary {
+  font-size: 1.05em;
+  line-height: 1.35;
+}
+/* Below the three-column tier (layout.css's 1300px) the detail columns of a
+   table that has them give way to one summary column: Mode and a line about
+   the start. */
+#content .choice-table .ct-narrow {
+  display: none;
+}
+@media screen and (max-width: 1299px) {
+  #content .choice-table .ct-wide {
+    display: none;
+  }
+  #content .choice-table th.ct-narrow,
+  #content .choice-table td.ct-narrow {
+    display: table-cell;
+  }
+  #content .choice-table td.ct-narrow {
+    font-size: 1.05em;
+    line-height: 1.35;
+  }
+}

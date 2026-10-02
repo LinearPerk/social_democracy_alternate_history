@@ -601,11 +601,11 @@ This is a game of alternate history. While historical accuracy is a major concer
 
 For more information on the politics and government of the German Republic, see the "Library" page on the top left. If this is your first time playing the game, it is strongly recommended that you read at least some of this information.
 
-- @1928_easy: Begin (easy difficulty)
-- @1928_main: Begin (normal difficulty)
-- @1928_hard: Begin (hard difficulty)
-- @1928_historical: Begin (historical mode)
-- @1928_custom: Customize difficulty settings
+- @1928_easy: Easy
+- @1928_main: Normal
+- @1928_hard: Hard
+- @1928_historical: Historical
+- @1928_custom: Custom settings
 
 @1928_easy
 on-arrival: difficulty = -1; resources = 4; dues = 3; rb_strength = 2500; left_dissent = 10; kpd_relation = 29; z_relation = 54; dvp_relation = 49; starting_budget = 5; budget = 5; hand_size = 4; starting_dissent = 0; starting_relations = 0;

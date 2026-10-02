@@ -1,0 +1,30 @@
+{
+  "root.start": {
+    "firstLabel": "Mode",
+    "summaryLabel": "At the start",
+    "rows": {
+      "root.1928_easy": {
+        "summary": "More resources, a bigger hand, friendlier parties.",
+        "detail": "4 resources, dues 3 · Reichsbanner 2.5m · budget 5 · hand of 4 · Left dissent 10 · relations Z 54, DVP 49, KPD 29"
+      },
+      "root.1928_main": {
+        "summary": "The standard game.",
+        "detail": "2 resources, dues 2 · Reichsbanner 2.0m · budget 4 · hand of 3 · Left dissent 20 · relations Z 50, DVP 35, KPD 25"
+      },
+      "root.1928_hard": {
+        "summary": "No starting resources, a restless party, no discarding.",
+        "detail": "0 resources, dues 1 · Reichsbanner 1.0m · budget 3 · hand of 3, no discarding · Left dissent 30 · relations Z 41, DVP 31, KPD 16"
+      },
+      "root.1928_historical": {
+        "summary": "A restless party, no discarding, harder actions. No saves or polls.",
+        "detail": "2 resources, dues 1, +2 each January · Reichsbanner 2.0m · budget 2 · hand of 3, no discarding · Left dissent 30 · relations Z 41, DVP 31, KPD 16 · no saves or polls"
+      },
+      "root.1928_custom": {
+        "summary": "Choose each setting yourself."
+      }
+    },
+    "notes": [
+      { "choice": "root.1928_historical", "subtitleHas": "Not recommended for a first playthrough." }
+    ]
+  }
+}

@@ -279,6 +279,50 @@ footer:not(:has(*)) {
   #mid_panel:not(:has(#stats_sidebar.sidebar-hidden)) #depth_column {
     min-height: max(var(--state-h, var(--panel-min)), var(--decision-h, 0px));
   }
+
+  /* Before a game starts, carousel.js puts a panel of the game's art in each
+     side track: #carousel-state for the state track, #carousel-depth for the
+     depth track. Each takes the empty panel's place and its parchment box,
+     and is exactly as tall as the decision panel beside it (the two rows it
+     spans are #content and the empty footer): its content is absolutely
+     placed, so it asks the grid for no height, and the 30rem floor of the
+     empty panels it replaces is not carried over. The carousels are removed
+     when the game starts, and the empty panels come back in the same tracks
+     as the state and depth columns. A taller decision panel (the Library,
+     opened from the header) stretches them with it. */
+  #carousel-state,
+  #carousel-depth {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    align-self: stretch;
+    min-height: 0;
+    color: var(--text-color);
+    background-color: var(--content-bg-color);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+  }
+  body.dark-mode #carousel-state,
+  body.dark-mode #carousel-depth {
+    border-style: double;
+    border-width: 4px;
+    border-color: #888;
+  }
+  #carousel-state {
+    grid-area: state;
+  }
+  #carousel-depth {
+    grid-area: depth;
+  }
+  #mid_panel:has(#carousel-state) #tools_wrapper:has(#stats_sidebar.sidebar-hidden),
+  #mid_panel:has(#carousel-depth) #depth_column:empty {
+    display: none;
+  }
+}
+
+/* The carousels are the three-column tier's; below it the state and depth
+   tracks are gone before a game starts, and so are they. */
+.cr-panel {
+  display: none;
 }
 
 /* Sticky state column */
@@ -329,6 +373,19 @@ footer:not(:has(*)) {
   #mid_panel:not(:has(#stats_sidebar.sidebar-hidden)) #content {
     box-sizing: border-box;
     min-height: var(--state-h, var(--panel-min));
+  }
+}
+
+/* The title page fills the screen too. Before a game starts the decision
+   panel takes the same floor, so it and the two carousels beside it (which
+   stretch to its height) reach the fold together instead of stopping a third
+   of the way down. Pages taller than the floor, the Library and Credits,
+   grow past it as before. The carousels exist in the three-column tier only,
+   so the floor does too. */
+@media screen and (min-width: 1300px) {
+  #mid_panel:has(#stats_sidebar.sidebar-hidden) #content {
+    box-sizing: border-box;
+    min-height: var(--panel-min);
   }
 }
 
@@ -546,4 +603,49 @@ header.slim #header-music svg {
 }
 header.slim #header-music button:focus-visible {
   outline-offset: -2px;
+}
+
+/* Compact hub */
+
+/* Cards use upstream's own small size (from its 560px breakpoint) at every
+   tier, not just narrow ones, so the Decks, Hand, and Advisors rows fit
+   above the fold on a laptop and a monitor alike. */
+a.card,
+div.blank-card {
+  width: 100px;
+  height: 125px;
+  border: 8px solid var(--card-border-color);
+  margin-bottom: 0;
+  /* Baseline alignment (upstream's default for an inline-block) leaves room
+     for a descender below the card that nothing ever draws into, once
+     margin-bottom is gone; bottom-aligning removes that sliver too. */
+  vertical-align: bottom;
+}
+.card-img {
+  width: 100px;
+  height: 125px;
+}
+.card-in-hand,
+.pinned-card,
+.deck {
+  max-width: 120px;
+  margin-right: 0.4em;
+}
+
+/* The three rows sit between a divider and a label paragraph (upstream
+   markup, unchanged); only the gaps around them shrink, enough for the
+   Decks and Hand rows to clear the fold on a laptop and the whole hub,
+   Advisors included, to clear it on a monitor. */
+#content hr {
+  margin: 0.1em 0;
+}
+.deck-description,
+.hand-description,
+.pinned-text-description {
+  margin-bottom: 0.1em;
+}
+ul.decks,
+ul.hand,
+ul.pinned-cards {
+  margin: 0.1em 0;
 }

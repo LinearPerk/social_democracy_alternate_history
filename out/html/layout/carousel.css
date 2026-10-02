@@ -1,0 +1,278 @@
+/*
+ * Carousel: the inside of the title-page side panels (carousel.js). The
+ * panels' boxes, their grid areas and when they show are in layout.css; this
+ * is what they hold. The left panel is a wall: as many landscape pictures
+ * stacked as its height holds, each at its own shape on a 3:2 stage with its
+ * own caption (Jost caps for the name, the page's serif for the credit), thin
+ * rules between. The right panel is one portrait in a newspaper photo block
+ * (the frame, below). Both end in a row of dots, one per picture, the ones
+ * showing lit. The panel's content is absolutely placed, so it asks the grid
+ * for no height: the panel is as tall as the decision panel beside it, which
+ * reaches the fold (layout.css, Panel bottoms). The wall takes whatever
+ * height the captions and dots leave.
+ */
+body {
+  /* The frame's ink: the text colour, thinned, so it reads on both themes. */
+  --cr-rule: color-mix(in srgb, var(--text-color) 62%, transparent);
+  --cr-hair: color-mix(in srgb, var(--text-color) 40%, transparent);
+  /* What the frame takes on each side of its picture: heavy rule 3, gap 4,
+     hairline 1, gap 3. */
+  --cr-edge: 11px;
+  /* A caption: two lines of name and two of credit. */
+  --cr-cap-h: 71px;
+}
+
+.cr-panel .cr-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 6px;
+  gap: 8px;
+}
+.cr-panel:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: -4px;
+}
+
+.cr-wall {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* A slot is a picture and its caption. A stage is a box the picture fits
+   inside whole (container units keep it at its own shape): the wall's are
+   3:2, the portrait's takes the panel's spare height. */
+.cr-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+}
+.cr-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  container-type: size;
+  --cr-ar: 1.5;
+}
+.cr-img {
+  display: block;
+  transition: opacity 0.18s ease;
+}
+.cr-img.cr-out {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cr-img {
+    transition: none;
+  }
+}
+
+/* The wall: slots spread evenly down the panel, a hairline between each
+   pair. */
+.cr-stack .cr-wall {
+  justify-content: space-evenly;
+}
+.cr-stack .cr-slot {
+  flex: none;
+}
+.cr-stack .cr-stage {
+  flex: none;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+}
+.cr-stack .cr-img {
+  box-sizing: border-box;
+  width: min(100cqw, calc(100cqh * var(--cr-ar)));
+  aspect-ratio: var(--cr-ar);
+  border: 1px solid var(--cr-hair);
+}
+.cr-rule {
+  flex: none;
+  height: 0;
+  border-top: 1px solid var(--cr-hair);
+}
+
+/* The portrait panel: one slot taking the panel's height. The slot is what
+   the frame fits inside, less its caption, so the frame and the caption
+   under it sit together in the middle of the panel. */
+.cr-single .cr-slot {
+  flex: 1 1 0;
+  justify-content: center;
+  container-type: size;
+}
+.cr-single .cr-stage {
+  flex: none;
+  container-type: normal;
+}
+
+/* The photo block, after a 1920s newspaper's: a heavy rule, a gap, a
+   hairline, the picture; a square stud (set on its point) at each corner of
+   the heavy rule. The frame's width is the largest that keeps the picture at
+   its shape inside the stage, so the frame hugs it. */
+.cr-frame {
+  position: relative;
+  box-sizing: border-box;
+  width: min(100cqw, calc((100cqh - var(--cr-cap-h) - 6px - 2 * var(--cr-edge)) * var(--cr-ar) + 2 * var(--cr-edge)));
+  padding: 4px;
+  border: 3px solid var(--cr-rule);
+}
+.cr-matte {
+  padding: 3px;
+  border: 1px solid var(--cr-hair);
+}
+.cr-frame .cr-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--cr-ar);
+}
+.cr-corner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--cr-rule);
+  /* A halo in the panel's own colour cuts the rule away round the stud. */
+  box-shadow: 0 0 0 2px var(--content-bg-color);
+  transform: rotate(45deg);
+}
+.cr-corner-tl {
+  top: -7px;
+  left: -7px;
+}
+.cr-corner-tr {
+  top: -7px;
+  right: -7px;
+}
+.cr-corner-bl {
+  bottom: -7px;
+  left: -7px;
+}
+.cr-corner-br {
+  bottom: -7px;
+  right: -7px;
+}
+
+/* The portrait's previous and next sit over the stage's edges, dim until the
+   panel is pointed at or focused. */
+.cr-step {
+  width: 28px;
+  height: 44px;
+  padding: 0 0 3px;
+  font: 500 24px/1 'Jost', sans-serif;
+  color: var(--text-color);
+  background-color: var(--content-bg-color);
+  border: 1px solid var(--sc-line, rgba(0, 0, 0, 0.15));
+  border-radius: 3px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.cr-single .cr-step {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.cr-single .cr-prev {
+  left: 4px;
+}
+.cr-single .cr-next {
+  right: 4px;
+}
+.cr-panel:hover .cr-step,
+.cr-panel:focus-within .cr-step {
+  opacity: 0.9;
+}
+.cr-step:focus-visible,
+.cr-dot:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 1px;
+}
+
+/* The caption's height is fixed so the pictures do not move from slide to
+   slide. */
+.cr-cap {
+  flex: 0 0 auto;
+  height: var(--cr-cap-h);
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.3;
+}
+.cr-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font: 500 12px/1.3 'Jost', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.cr-note {
+  color: var(--sc-muted, rgba(0, 0, 0, 0.45));
+}
+.cr-credit {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-top: 3px;
+  font-size: 14px;
+  color: var(--sc-muted, rgba(0, 0, 0, 0.45));
+}
+
+/* The bottom row: the dots, and on the wall the two buttons either side. */
+.cr-foot {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cr-foot .cr-step {
+  flex: none;
+  width: 26px;
+  height: 20px;
+  padding: 0 0 2px;
+  font-size: 18px;
+}
+.cr-foot .cr-dots {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.cr-dots {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  height: 16px;
+}
+.cr-dot {
+  position: relative;
+  flex: 0 1 14px;
+  min-width: 0;
+  height: 16px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.cr-dot::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background-color: var(--sc-muted, rgba(0, 0, 0, 0.45));
+  opacity: 0.45;
+}
+.cr-dot.on::after {
+  background-color: #E3000F;
+  opacity: 1;
+}
+.cr-stack .cr-credit {
+  font-size: 13px;
+}

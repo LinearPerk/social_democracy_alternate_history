@@ -1,0 +1,427 @@
+{
+ "img/arbeiterbew.jpg": {
+  "title": "",
+  "artist": "Unknown author",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Arbeiterbew.jpg",
+  "width": 782,
+  "height": 899
+ },
+ "img/bankrun.jpg": {
+  "title": "Berlin, Bankenkrach, Andrang bei der Sparkasse",
+  "artist": "Bundesarchiv, Bild 102-12023 / Georg Pahl",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-12023,_Berlin,_Bankenkrach,_Andrang_bei_der_Sparkasse.jpg",
+  "width": 792,
+  "height": 528
+ },
+ "img/blutmai_2.jpg": {
+  "title": "Berlin, Blutmai, Straßenbarrikade",
+  "artist": "Bundesarchiv, B 145 Bild-P046278 / Carl Weinrother",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_B_145_Bild-P046278,_Berlin,_Blutmai,_Stra%C3%9Fenbarrikade.jpg",
+  "width": 796,
+  "height": 520
+ },
+ "img/blutmai.jpg": {
+  "title": "Berlin, Mai-Unruhen",
+  "artist": "Bundesarchiv, Bild 102-07717 / Sturkow (a.o.t.)",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-07717,_Berlin,_Mai-Unruhen.jpg",
+  "width": 800,
+  "height": 528
+ },
+ "img/braun.jpg": {
+  "title": "Plakat der SPD zur Reichstagswahl",
+  "artist": "Bundesarchiv, Bild 102-01196 / Fritz Gottfried Kirchbach",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-01196,_Plakat_der_SPD_zur_Reichstagswahl.jpg",
+  "width": 580,
+  "height": 795
+ },
+ "img/danat_bank.jpg": {
+  "title": "Darmstaedter und Nationalbank 1928",
+  "artist": "Julie Ceccaldi",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Darmstaedter_und_Nationalbank_1928.jpg",
+  "width": 1200,
+  "height": 860
+ },
+ "img/flags.jpg": {
+  "title": "Berlin, Maidemonstration der SPD",
+  "artist": "Bundesarchiv, Bild 102-09700",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-09700,_Berlin,_Maidemonstration_der_SPD.jpg",
+  "width": 663,
+  "height": 460
+ },
+ "img/hindenburg_election.jpg": {
+  "title": "Berlin, Wahlplakat für Hindenburg",
+  "artist": "Bundesarchiv, Bild 183-R99203",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-R99203,_Berlin,_Wahlplakat_f%C3%BCr_Hindenburg.jpg",
+  "width": 547,
+  "height": 799
+ },
+ "img/hirschfeld.jpg": {
+  "title": "Bernhard Schapiro, Magnus Hirschfeld, Tao Lee",
+  "artist": "Unknown author",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Bernhard_Schapiro,_Magnus_Hirschfeld,_Tao_Lee.jpg",
+  "width": 640,
+  "height": 421
+ },
+ "img/international.jpg": {
+  "title": "Drapeau genevois de l'Association Internationale des travailleurs",
+  "artist": "Louis George (né au début du 19e siècle - 1899)",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Drapeau_genevois_de_l%27Association_Internationale_des_travailleurs.png",
+  "width": 419,
+  "height": 488
+ },
+ "img/iron_front.png": {
+  "title": "Eiserne Front Symbol",
+  "artist": "Fusslkopp (SVG version: Warddr)",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/wiki/File:Eiserne_Front_Symbol.svg",
+  "width": 358,
+  "height": 358
+ },
+ "img/Mann_der_Arbeit.jpg": {
+  "title": "Mann der Arbeit, aufgewacht! Postkarte, c. 1910",
+  "artist": "Artist not credited (verse by Georg Herwegh)",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Mann_der_Arbeit,_aufgewacht!_Postkarte,_c._1910.jpg",
+  "width": 575,
+  "height": 899
+ },
+ "img/map_2.jpg": {
+  "title": "Meyers Blitz-Lexikon",
+  "artist": "Anonymous",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:LA2-Blitz-0083.jpg",
+  "width": 780,
+  "height": 439
+ },
+ "img/muller_cabinet.jpg": {
+  "title": "Kabinett Müller",
+  "artist": "Bundesarchiv, Bild 146-1986-014-10 / Willi Ruge",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_146-1986-014-10,_Kabinett_M%C3%BCller.jpg",
+  "width": 785,
+  "height": 542
+ },
+ "img/panzerkreuzer.jpg": {
+  "title": "German cruiser Deutschland in 1935",
+  "artist": "Heinrich Hoffmann Collection, U.S. National Archives",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:German_cruiser_Deutschland_in_1935.jpg",
+  "width": 739,
+  "height": 554
+ },
+ "img/portraits/AufhäuserSiegfried.jpg": {
+  "title": "Siegfried Aufhäuser 1928",
+  "artist": "Suse Byk",
+  "license": "Public domain",
+  "source": "https://de.wikipedia.org/wiki/Datei:Siegfried_Aufh%C3%A4user_1928.jpg",
+  "width": 542,
+  "height": 726
+ },
+ "img/portraits/BaadeFritz.jpg": {
+  "title": "",
+  "artist": "Unknown author",
+  "license": "Public domain",
+  "source": "https://de.wikipedia.org/wiki/Datei:BaadeFritz.jpg",
+  "width": 561,
+  "height": 703
+ },
+ "img/portraits/BraunOtto.jpg": {
+  "title": "Otto Braun und Rudolf Breitscheid",
+  "artist": "Bundesarchiv, Bild 102-13412",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-13412,_Otto_Braun_und_Rudolf_Breitscheid.jpg",
+  "width": 197,
+  "height": 225
+ },
+ "img/portraits/BreitscheidRudolf.jpg": {
+  "title": "",
+  "artist": "Unknown author",
+  "license": "Public domain",
+  "source": "https://de.wikipedia.org/wiki/Datei:BreitscheidRudolf.jpg",
+  "width": 596,
+  "height": 704
+ },
+ "img/portraits/HilferdingRudolf.jpg": {
+  "title": "",
+  "artist": "Unknown author",
+  "license": "Public domain",
+  "source": "https://de.wikipedia.org/wiki/Datei:HilferdingRudolf.jpg",
+  "width": 587,
+  "height": 704
+ },
+ "img/portraits/JuchaczMarie.jpg": {
+  "title": "",
+  "artist": "Saracleg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:JuchaczMarie.jpg",
+  "width": 556,
+  "height": 702
+ },
+ "img/portraits/LeberJulius.jpg": {
+  "title": "",
+  "artist": "Unknown author",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:LeberJulius.jpg",
+  "width": 569,
+  "height": 702
+ },
+ "img/portraits/LeipartTheodor.jpg": {
+  "title": "",
+  "artist": "Archiv der sozialen Demokratie (AdsD)",
+  "license": "Public domain",
+  "source": "https://library.fes.de/arbeit/bild-leipart2.html",
+  "width": 341,
+  "height": 472
+ },
+ "img/portraits/LeviPaul.jpg": {
+  "title": "Paul Levi - Schwadron",
+  "artist": "National Library of Israel, Schwadron collection",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Paul_Levi_-_Schwadron.jpg",
+  "width": 660,
+  "height": 898
+ },
+ "img/portraits/MierendorffCarlo.jpg": {
+  "title": "",
+  "artist": "Unknown author",
+  "license": "Public domain",
+  "source": "https://de.wikipedia.org/wiki/Datei:MierendorffCarlo.jpg",
+  "width": 559,
+  "height": 704
+ },
+ "img/portraits/MüllerHermann.jpg": {
+  "title": "Hermann Müller",
+  "artist": "Bundesarchiv, Bild 146-1979-122-28A",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_146-1979-122-28A,_Hermann_M%C3%BCller.jpg",
+  "width": 538,
+  "height": 802
+ },
+ "img/portraits/PapenFranz.jpg": {
+  "title": "Franz v. Papen",
+  "artist": "Bundesarchiv, Bild 183-1988-0113-500",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-1988-0113-500,_Franz_v._Papen_(cropped)(2).jpg",
+  "width": 661,
+  "height": 898
+ },
+ "img/portraits/PfülfAntonie.jpg": {
+  "title": "Philipp Kester, Toni Pfülf",
+  "artist": "Philipp Kester",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Philipp_Kester,_Toni_Pf%C3%BClf.jpg",
+  "width": 593,
+  "height": 899
+ },
+ "img/portraits/RadbruchGustav.jpg": {
+  "title": "",
+  "artist": "Unknown author",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:RadbruchGustav.jpg",
+  "width": 195,
+  "height": 240
+ },
+ "img/portraits/RosenfeldKurt.jpg": {
+  "title": "",
+  "artist": "Unknown author",
+  "license": "Public domain",
+  "source": "https://de.wikipedia.org/wiki/Datei:RosenfeldKurt.jpg",
+  "width": 556,
+  "height": 702
+ },
+ "img/portraits/SchleicherKurt.jpg": {
+  "title": "",
+  "artist": "Robert Sennecke",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:KurtVonScheleicherEn1932.jpeg",
+  "width": 604,
+  "height": 898
+ },
+ "img/portraits/SchumacherKurt.jpg": {
+  "title": "",
+  "artist": "US Army photographers",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:K.Schumacher.jpg",
+  "width": 328,
+  "height": 456
+ },
+ "img/portraits/SenderToni.jpg": {
+  "title": "",
+  "artist": "S-T-R-E-E-T-L-I-V-E (Flickr)",
+  "license": "CC-BY-ND 2.0",
+  "source": "https://www.flickr.com/photos/s-t-r-e-e-t-l-i-v-e/8593056537/",
+  "width": 600,
+  "height": 798
+ },
+ "img/portraits/SeveringCarl.jpg": {
+  "title": "Carl Severing",
+  "artist": "Bundesarchiv, Bild 183-R11405",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-R11405,_Carl_Severing.jpg",
+  "width": 554,
+  "height": 796
+ },
+ "img/portraits/StresemannGustav.jpg": {
+  "title": "Gustav Stresemann",
+  "artist": "Bundesarchiv, Bild 146-1989-040-27",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_146-1989-040-27,_Gustav_Stresemann.jpg",
+  "width": 517,
+  "height": 790
+ },
+ "img/portraits/WelsOtto.jpg": {
+  "title": "",
+  "artist": "Unknown author",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ottowelsportait.jpg",
+  "width": 528,
+  "height": 700
+ },
+ "img/portraits/WissellRudolf.jpg": {
+  "title": "Rudolf Wissell",
+  "artist": "Bundesarchiv, Bild 102-09381",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-09381,_Rudolf_Wissel_(cropped).jpg",
+  "width": 121,
+  "height": 153
+ },
+ "img/portraits/WoytinskyWladimir.jpg": {
+  "title": "",
+  "artist": "Unknown author",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:SocialistasEnIrkutskDanTsereteliVoitinskiDan19141915.png",
+  "width": 286,
+  "height": 332
+ },
+ "img/poster_0.jpg": {
+  "title": "Gleiche Rechte Gleiche Pflichten, social democrat party poster 1919",
+  "artist": "Design Fritz Gottfried Kirchbach",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Gleiche_Rechte_Gleiche_Pflichten,_social_democrat_party_poster_1919.jpg",
+  "width": 334,
+  "height": 449
+ },
+ "img/poster_1.png": {
+  "title": "",
+  "artist": "Walter Riemer (1896-1942)",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:SPD-1919--Wahlwerbung-Walter-Riemer.png",
+  "width": 360,
+  "height": 480
+ },
+ "img/poster_2.jpg": {
+  "title": "Plakat Sozialdemokraten 1928",
+  "artist": "",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Plakat_Sozialdemokraten_1928.jpg",
+  "width": 432,
+  "height": 600
+ },
+ "img/protest.jpg": {
+  "title": "Berlin, Versammlung der Republikaner",
+  "artist": "Bundesarchiv, Bild 102-13624",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-13624,_Berlin,_Versammlung_der_Republikaner.jpg",
+  "width": 800,
+  "height": 539
+ },
+ "img/redfront.jpg": {
+  "title": "Berlin, Pfingstreffen der Rot-Front-Kämpfer",
+  "artist": "Bundesarchiv, Bild 102-05977",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-05977,_Berlin,_Pfingstreffen_der_Rot-Front-K%C3%A4mpfer.jpg",
+  "width": 800,
+  "height": 530
+ },
+ "img/reichsbanner.jpg": {
+  "title": "Berlin, Kundgebung des Reichsbanners im Lustgarten",
+  "artist": "Bundesarchiv, Bild 102-05611",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-05611,_Berlin,_Kundgebung_des_Reichsbanners_im_Lustgarten.jpg",
+  "width": 800,
+  "height": 525
+ },
+ "img/reichstag_1.jpg": {
+  "title": "Berlin, Reichstag, Reichsgründungsfeier",
+  "artist": "Bundesarchiv, Bild 102-11057A",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-11057A,_Berlin,_Reichstag,_Reichsgr%C3%BCndungsfeier.jpg",
+  "width": 528,
+  "height": 800
+ },
+ "img/reichstag_2.jpg": {
+  "title": "Berlin, Reichstag, Verfassungsfeier",
+  "artist": "Bundesarchiv, Bild 102-13744",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_102-13744,_Berlin,_Reichstag,_Verfassungsfeier.jpg",
+  "width": 800,
+  "height": 533
+ },
+ "img/sangerbund.jpg": {
+  "title": "1928 Curt Reibetantz Plakat Hannover 1928 Erstes Deutsches Arbeiter Sängerbundesfest",
+  "artist": "Curt Reibetantz",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:1928_Curt_Reibetantz_Plakat_Hannover_1928_Erstes_Deutsches_Arbeiter_S%C3%A4ngerbundesfest.jpg",
+  "width": 500,
+  "height": 741
+ },
+ "img/Vorwaerts_nr_1.png": {
+  "title": "Vorwärts Nr. 1",
+  "artist": "User Akl on de.wikipedia",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Vorwaerts_nr_1.png",
+  "width": 445,
+  "height": 600
+ },
+ "img/vorwarts_2.jpg": {
+  "title": "Julie Wolfthorn - VORWÄRTS. Mark 1,10 pro Monat; frei ins Haus",
+  "artist": "Julie Wolfthorn",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Julie_Wolfthorn_-_VORW%C3%84RTS._Mark_1,10_pro_Monat;_frei_ins_Haus.jpg",
+  "width": 614,
+  "height": 900
+ },
+ "img/weimar_coalition_2.jpg": {
+  "title": "",
+  "artist": "KAS/ACDP 10-043 : 20",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:KAS-Wiederaufbau-Bild-35026-1.jpg",
+  "width": 793,
+  "height": 1209
+ }
+}

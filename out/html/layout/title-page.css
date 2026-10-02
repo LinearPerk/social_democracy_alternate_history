@@ -1,0 +1,61 @@
+/*
+ * Title page: the centre panel's masthead (title-page.js). The script adds
+ * the picture and the fleuron, and puts `tp-title` on #content only where
+ * they apply (the three-column tier, the title scene, before a game starts);
+ * the rules here are in the same tier, so a narrower window keeps upstream's
+ * heading. The picture's frame is the carousels' (carousel.css); the caption
+ * type is theirs too (.cr-name, .cr-credit).
+ */
+@media screen and (min-width: 1300px) {
+  /* The banner carries the title. */
+  #content.tp-title > h1 {
+    display: none;
+  }
+
+  /* The picture: a framed photo block, as wide as the column and no taller
+     than a third of the window, so the menu stays above the fold on a
+     laptop. The block's width is the widest that keeps the picture's shape
+     inside that height; the caption runs under it, edge to edge. */
+  #content.tp-title .tp-hero {
+    width: min(100%, calc((34vh - 2 * var(--cr-edge)) * var(--cr-ar) + 2 * var(--cr-edge)));
+    margin: 0.4em auto 0;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+  #content.tp-title .tp-picture .cr-frame {
+    width: 100%;
+  }
+  #content.tp-title .tp-cap {
+    margin-top: 0.5em;
+  }
+  #content.tp-title .tp-cap .cr-credit {
+    -webkit-line-clamp: 2;
+  }
+
+  /* The fleuron between the picture and the note: a pair of lozenges in the
+     frame's ink. */
+  #content.tp-title .tp-fleuron {
+    margin: 0.9em 0 0.7em;
+    text-align: center;
+    font: 400 13px/1 'Jost', sans-serif;
+    letter-spacing: 0.9em;
+    text-indent: 0.9em;
+    color: var(--cr-rule);
+  }
+
+  /* The menu as a newspaper list: a double rule above, hairlines between,
+     a double rule below, no box. */
+  #content.tp-title ul.choices {
+    margin: 0.6em 0 0;
+    border: 0;
+    border-top: 4px double var(--cr-rule);
+    border-bottom: 4px double var(--cr-rule);
+    border-radius: 0;
+  }
+  #content.tp-title ul.choices li {
+    border-bottom: 1px solid var(--cr-hair);
+  }
+  #content.tp-title ul.choices li:last-child {
+    border-bottom: 0;
+  }
+}
