@@ -51,7 +51,7 @@ We can combat the Nazis by adopting a "People's Party" posture that might compet
 @p3
 on-arrival: neorevisionist_strength += 10; nazi_urgency += 1; neorevisionism += 1;
 
-Working together with other "neorevisionists" such as Sergei Chakhotin, Mierendorff has developed new propaganda methods to fight the rise of the Nazis. They focus on visually striking symbols and repetitious slogans. Time will tell how effective they are.
+Working together with other Neorevisionists such as Sergei Chakhotin, Mierendorff has developed new propaganda methods to fight the rise of the Nazis. They focus on visually striking symbols and repetitious slogans. Time will tell how effective they are.
 
 @p4
 on-arrival: left_strength += 4; center_strength += 4; labor_strength += 4; left_dissent -= 3; center_dissent -= 3; labor_dissent -= 3; workers_spd += 2*(1-dissent); unemployed_spd += 2*(1-dissent)

@@ -11,7 +11,7 @@ tags: event
 
 President Paul von Hindenburg has passed away at age 86. An era of history is closing, and the future remains to be seen.
 
-The nation engages in an outpouring of grief for its war hero and president, with even some sympathy among committed republicans and socialists. After all, Hindenburg steered the republic through some of its most challenging times, without giving in to extremists on the far right. Perhaps he is one reason democracy remains alive.
+The nation engages in an outpouring of grief for its war hero and president, with even some sympathy among committed republicans and socialists. After all, Hindenburg steered the Republic through some of its most challenging times, without giving in to extremists on the far right. Perhaps he is one reason democracy remains alive.
 
 New presidential elections are to be held as soon as possible. The German political landscape is wide open, with contenders from all over the political space. In the meantime, Supreme Court chief justice [? if judicial_reform < 4 : Erwin Bumke ?][? if judicial_reform >= 4 : Hermann Großmann ?] serves as the acting president.
 

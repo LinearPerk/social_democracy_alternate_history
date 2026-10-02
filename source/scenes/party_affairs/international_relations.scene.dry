@@ -36,7 +36,7 @@ on-arrival: left_strength += 5; radicalization += 1; rb_militancy += 0.03; resou
 
 Our Reichsbanner can learn much in paramilitary organization and training from the Austrian Republikanischer Schutzbund (Republican Protection Units), the paramilitary branch of the Austrian social democrats.
 
-[? if austrian_parliament_seen and not austrian_civil_war_seen: We are also helping the Austrian Social Democratic Worker's Party build up their resources in preparation for a future struggle, legally and illegally. ?]
+[? if austrian_parliament_seen and not austrian_civil_war_seen: We are also helping the Austrian Social Democratic Workers' Party build up their resources in preparation for a future struggle, legally and illegally. ?]
 
 
 @scandi

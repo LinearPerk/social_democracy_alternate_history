@@ -26,7 +26,7 @@ subtitle: -[+ rb_militarization_cost +] resources
 choose-if: resources >= rb_militarization_cost
 on-arrival: resources -= rb_militarization_cost; rb_strength += 50; rb_militancy += 0.05; z_relation -= 5 if historical_mode
 
-The Iron Front rallies for the militant defense of the republic against the fascist paramilitaries, strengthening the Reichsbanner.
+The Iron Front rallies for the militant defense of the Republic against the fascist paramilitaries, strengthening the Reichsbanner.
 
 [? if historical_mode : The Center Party decries the militarization of the Reichsbanner and Iron Front, and its members are leaving the republican organization. ?]
 
