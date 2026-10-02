@@ -1,0 +1,1229 @@
+/*
+ * State column: styles for state-column.js and view.js. Classes are
+ * prefixed sc-. Colours come from the game's --text-color and
+ * --content-bg-color, plus a small set of sc- variables defined for both
+ * themes. 08-11 add their own panel styles in their own blocks below.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+
+body {
+  /* Secondary text: labels, headings, units. Dark enough to read at 10px on
+     the panel (about 6:1); the full text colour is for names and figures. */
+  --sc-muted: rgba(0, 0, 0, 0.64);
+  --sc-line: rgba(0, 0, 0, 0.15);
+  /* The rhythm of the three tabs (Party, Defense, State), written once here.
+     Every row sits on --sc-row; a Defense row has two lines (16px of name and
+     status, --sc-bar-h of bar) and takes --sc-row-2. A heading's line is
+     --sc-head-h and a bar's thickness --sc-bar-h. Three gaps set the pieces
+     apart in all three tabs: --sc-tab-gap under the tab bar, --sc-head-gap
+     between a heading and its rows, --sc-group-gap between groups.
+     --sc-lead is the room above the tab bar: 6px, and nothing in government.
+     The sidebar's budget at a 1366x768 laptop is the window less the columns'
+     offset and the body margin (682.8px of content at the slim banner), and
+     the tallest state (Defense in government) fills it to within a few
+     pixels: raise a value and state-fit says when a state no longer fits.
+     Values now: lead 6 (0 in government, was 14 and 8); Defense row 26 (was
+     28); ledger row 25 (was 28, in the ledger rules below); hemicycle 83.125%
+     of the column wide (was 87.5%). */
+  --sc-row: 22px;
+  --sc-row-2: 26px;
+  --sc-tab-gap: 8px;
+  --sc-head-gap: 6px;
+  --sc-group-gap: 10px;
+  --sc-lead: 6px;
+  --sc-bar-h: 10px;
+  --sc-head-h: 10px;
+}
+body.dark-mode {
+  --sc-muted: rgba(255, 255, 255, 0.72);
+  --sc-line: rgba(255, 255, 255, 0.2);
+}
+
+/* the column itself */
+#stats_sidebar.sc-on {
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  line-height: 1.3;
+}
+#stats_sidebar.sc-on .tab_container {
+  display: none;
+}
+
+/* The column is a graphic readout set in px. The Options font control puts an
+   inline em size on #stats_sidebar, which would resize whatever inherits it,
+   so the column sets its own size here (the one it is designed at) and
+   ignores the control. Reading matter keeps scaling. The line height is
+   pinned too: game.css gives #qualities `line-height: 1.3em`, a length that
+   children inherit as computed, so it would follow the sidebar's size;
+   16.9px is 1.3em at 13px, what the rows were designed against. */
+#stats_sidebar.sc-on #state-column {
+  font-size: 13px;
+  line-height: 16.9px;
+}
+/* The panel's padding is 0.6em (game.css), so it grows with the inline size
+   too and squeezes the rows. 7.8px is 0.6em at 13px, the default. */
+#stats_sidebar.sc-on {
+  padding: 7.8px;
+}
+
+/* The date line, above the decision column. Its look (type, backing, height)
+   is the shared .column-bar class in layout.css; here it only centres itself
+   in its column. */
+#date-line {
+  max-width: 540px;
+  margin: 0 auto 6px;
+  cursor: pointer;
+}
+/* The date is a button that opens the month's entry in the depth column. It
+   fills the bar and takes the bar's own type, so the bar looks as it did:
+   the bar's side padding (8px, .column-bar) moves onto the button. */
+#date-line {
+  padding: 0;
+}
+#date-line button {
+  flex: 1;
+  align-self: stretch;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0 8px;
+  cursor: pointer;
+}
+#date-line button:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: -2px;
+}
+
+/* In government the column is taller above the tabs, and the Defense tab gains
+   a seventh row: the room above the tab bar goes to nothing to fit. */
+#state-column.sc-gov {
+  --sc-lead: 0px;
+}
+
+/* The open tab's body is at least as tall as the tallest of the three (a
+   minimum set by state-column.js), so the box keeps one height as the tabs
+   change and a shorter tab leaves blank parchment at its foot. flow-root
+   keeps a last row's margin inside the body, where the measurer counts it.
+   The measurer is those same tab bodies drawn off-screen for a moment, in
+   the column's width, to read their heights. */
+#state-column .sc-body {
+  display: flow-root;
+}
+#state-column .sc-measure {
+  position: absolute;
+  left: -10000px;
+  top: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* tab bar: a compact three-segment toggle, one line */
+#state-column .sc-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--sc-line);
+  margin: var(--sc-lead) -2px var(--sc-tab-gap);
+}
+#state-column .sc-tab {
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  white-space: nowrap;
+  font: 500 12px 'Jost', sans-serif;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: 0 2px;
+  color: var(--sc-muted);
+  cursor: pointer;
+}
+#state-column .sc-tab.on {
+  color: var(--text-color);
+  border-bottom-color: #E3000F;
+}
+/* A shut tab whose figures changed: a 6px dot in the accent red after the
+   label. It clears when the tab opens. */
+#state-column .sc-tab .sc-dot {
+  flex: 0 0 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #E3000F;
+}
+
+/* change feedback: the delta markers panels attach to a changed value */
+body {
+  --sc-good: #2e7d32;
+  --sc-bad: #b3261e;
+}
+body.dark-mode {
+  --sc-good: #81c784;
+  --sc-bad: #ff8a80;
+}
+.sc-delta {
+  display: inline-block;
+  margin-left: 3px;
+  font-size: 9px;
+  letter-spacing: -1px;
+  vertical-align: 1px;
+}
+.sc-delta.good {
+  color: var(--sc-good);
+}
+.sc-delta.bad {
+  color: var(--sc-bad);
+}
+.sc-delta.neutral {
+  color: var(--sc-muted);
+}
+.sc-delta.cross {
+  font-size: 8px;
+  line-height: 11px;
+  padding: 0 2px;
+  border-radius: 3px;
+  vertical-align: 0;
+}
+.sc-delta.cross.good {
+  background: var(--sc-good);
+  color: #fff;
+}
+.sc-delta.cross.bad {
+  background: var(--sc-bad);
+  color: #fff;
+}
+.sc-delta.cross.neutral {
+  background: #777;
+  color: #fff;
+}
+.sc-delta.pulse {
+  animation: sc-pulse 1.2s ease-out 2;
+}
+@keyframes sc-pulse {
+  0% {
+    transform: scale(1.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Party badges and period symbols */
+.sc-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 2px;
+  border-radius: 3px;
+  font: 700 10px 'Jost', sans-serif;
+}
+.sc-badge.sc-sym {
+  background: none;
+  padding: 0;
+}
+.sc-badge img {
+  height: 16px;
+  max-width: 26px;
+}
+.sc-badge.big {
+  min-width: 26px;
+  height: 26px;
+  font-size: 13px;
+}
+.sc-badge.big img {
+  height: 26px;
+  max-width: 40px;
+}
+
+/* The "Party symbols" block inside the Options overlay, which is
+   white on dark grey in both themes */
+#options .sc-symbols-setting {
+  padding: 10px 16px 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+#options .sc-symbols-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+#options .sc-symbols-btn {
+  font: 500 12px 'Jost', sans-serif;
+  background: none;
+  color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+#options .sc-symbols-btn.on {
+  background: #E3000F;
+  border-color: #E3000F;
+  color: #fff;
+}
+
+/* Seat chart, government bar, and election countdown */
+body {
+  --sc-track: rgba(0, 0, 0, 0.09);
+}
+body.dark-mode {
+  --sc-track: rgba(255, 255, 255, 0.12);
+}
+#state-column .sc-chart {
+  cursor: pointer;
+}
+/* The bar over the column (#state-bar, which layout.css sizes and styles as a
+   column bar): the title centred like the date line's text, the Seats / Polls
+   toggle at the right end, out of the flow so it doesn't push the title off
+   centre. The toggle is the tab bar's look at a smaller size: muted text, the
+   open segment in full colour with the same red underline. */
+#state-bar {
+  position: relative;
+  cursor: pointer;
+}
+/* The title is a button, for the keyboard, styled as the text it replaced.
+   A click anywhere else on the bar opens the Reichstag entry too (the
+   toggle excepted), so the whole bar shows the pointer. */
+#state-bar .sc-bar-title {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+#state-bar .sc-bar-title:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: -2px;
+}
+#state-bar .sc-seg.small {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 8px;
+  cursor: default;
+}
+#state-bar .sc-seg.small button {
+  box-sizing: border-box;
+  height: 18px;
+  padding: 0 1px;
+  font: 500 11px 'Jost', sans-serif;
+  letter-spacing: normal;
+  text-transform: none;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  color: var(--sc-muted);
+  cursor: pointer;
+}
+#state-bar .sc-seg.small button.on {
+  color: var(--text-color);
+  border-bottom-color: #E3000F;
+}
+/* 83.125% of the column, centred: seven eighths less another 5%, so the arc
+   is shorter by that much again. The drawing is scaled whole (its viewBox is
+   262.5 wide, SC_HEMI_W in view.js), so the dots and the centre label keep
+   their proportions and the clearance the label has from the seats and the
+   bottom edge, in drawing units. */
+#state-column .sc-hemi {
+  display: block;
+  width: 83.125%;
+  margin: 0 auto;
+}
+/* A coalition picked in the depth column's Reichstag entry: its parties' dots
+   stay at full strength and the rest recede. */
+#state-column .sc-party-seats {
+  transition: opacity 0.15s;
+}
+#state-column .sc-party-seats.dim {
+  opacity: 0.2;
+}
+#state-column .sc-majline {
+  stroke: var(--text-color);
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+  opacity: 0.6;
+}
+#state-column .sc-housenum {
+  text-anchor: middle;
+  font: 700 18px 'Jost', sans-serif;
+  fill: var(--text-color);
+}
+#state-column .sc-houselbl {
+  text-anchor: middle;
+  font: 500 9px 'Jost', sans-serif;
+  fill: var(--sc-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+/* Sentence-like, so it stays lower case and sits inside the hollow centre. */
+#state-column .sc-majlbl {
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+/* Tight margins here and on the countdown, officials line and tab rows: with
+   the SPD in government the Party tab is the tallest state, and together
+   these keep it inside a 1366x768 laptop's sidebar without a scrollbar. */
+#state-column .sc-govbar {
+  margin: 2px 0;
+}
+#state-column .sc-govlbl {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-color);
+}
+/* The cabinet part gives way first: it truncates so the position word and
+   the seat fraction always stay whole on one line. */
+#state-column .sc-govlbl b {
+  display: flex;
+  min-width: 0;
+  white-space: nowrap;
+}
+#state-column .sc-govlbl .pos {
+  flex: none;
+}
+#state-column .sc-govlbl .cab {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+}
+#state-column .sc-govlbl > span {
+  flex: none;
+  white-space: nowrap;
+}
+#state-column .sc-govlbl .ok {
+  color: var(--sc-good);
+  font-weight: 700;
+}
+#state-column .sc-govlbl .short {
+  color: var(--sc-bad);
+  font-weight: 700;
+}
+/* The countdown rides the officials line's right end; one that can't share
+   the line (a chancellor is named there too) takes a line of its own. It is
+   tracked as tightly as the names, which is what leaves "Reichspräsident
+   Hindenburg" and a full countdown room on one line. */
+#state-column .sc-countdown {
+  flex: none;
+  margin-left: auto;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: var(--text-color);
+}
+#state-column .sc-countdown.own {
+  flex-basis: 100%;
+  margin-left: 0;
+}
+#state-column .sc-countdown small {
+  color: var(--sc-muted);
+}
+/* The badges beside a chancellor's name (in the government label and on the
+   officials line) sit on the text's middle. */
+#state-column .sc-govlbl .cab .sc-badge,
+#state-column .sc-officials .sc-badge {
+  vertical-align: middle;
+  margin-right: 4px;
+  position: relative;
+  top: -1px;
+}
+#state-column .sc-officials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 10px;
+  margin-top: 2px;
+  font-size: 13px;
+  letter-spacing: -0.02em;
+  color: var(--text-color);
+}
+/* The office holders' names carry the line; the office words stay regular. */
+#state-column .sc-officials .who b {
+  font-weight: 500;
+}
+/* Tracked a little tighter than the line, so the two longest names still fit
+   it whole at the heavier weight. */
+#state-column .sc-officials .who {
+  letter-spacing: -0.03em;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Party ledger */
+body {
+  --sc-gold: #b8892a;
+}
+body.dark-mode {
+  --sc-gold: #d9a54c;
+}
+/* Relations fills, cold to warm, one per band of relationships.qdisplay.dry.
+   Independent of party colours. On the light track only hostile and frigid
+   reach 3:1 by fill alone; the rest get an edge (see .fill below). Dark mode
+   lifts the slate and blue end (and burnt orange) so each fill clears 3:1
+   against the dark track by itself. */
+body {
+  --sc-rel-hostile: #2f3e56;
+  --sc-rel-frigid: #3f6590;
+  --sc-rel-cold: #5d88b3;
+  --sc-rel-cool: #93b3cf;
+  --sc-rel-neutral: #b9b2a6;
+  --sc-rel-warm: #e3b25a;
+  --sc-rel-friendly: #e08a3c;
+  --sc-rel-very-friendly: #c9602a;
+  --sc-rel-edge: rgba(0, 0, 0, 0.45);
+}
+body.dark-mode {
+  --sc-rel-hostile: #7a8db0;
+  --sc-rel-frigid: #5a8ccd;
+  --sc-rel-cold: #75a2d4;
+  --sc-rel-very-friendly: #dd6d3c;
+  --sc-rel-edge: transparent;
+}
+#state-column .sc-ledger {
+  display: grid;
+  /* stripe, badge, name, seats, relations track, word, star. The name column
+     is fixed and just wide enough for the longest label, so seats sit right
+     after it. The word column holds the longest band word ("very friendly")
+     and a two-arrow change pill; the track takes the remaining width. Each
+     row is its own grid, so the word column can't size to content without
+     the tracks losing their common width. */
+  grid-template-columns: 4px 30px 44px 44px 1fr 76px 12px;
+  gap: 3px;
+  align-items: center;
+  font-size: 12px;
+}
+/* Ledger badges are 24px tall, the period symbols being a highlight of the
+   column. Wide symbols (flags) keep their shape inside the 30px badge
+   column; the plain badge stays a 24px square, centred in that column. */
+#state-column .sc-ledger .sc-badge {
+  min-width: 24px;
+  max-width: 30px;
+  height: 24px;
+  justify-self: center;
+  font-size: 13px;
+}
+#state-column .sc-ledger .sc-badge img {
+  height: 24px;
+  max-width: 30px;
+  object-fit: contain;
+}
+/* No padding: a row is the 24px symbol under its 1px rule, 25px, and nine of
+   them keep the whole column inside a 1366x768 laptop's sidebar without a
+   scrollbar. */
+#state-column .sc-ledger {
+  padding: 0;
+  border-top: 1px solid var(--sc-line);
+}
+/* The player's row: a light wash of the SPD colour, readable on both themes. */
+#state-column .sc-ledger.player {
+  background: rgba(227, 0, 15, 0.1);
+}
+body.dark-mode #state-column .sc-ledger.player {
+  background: rgba(227, 0, 15, 0.22);
+}
+/* The row of the party whose entry is open in the depth column: the Defense
+   list's open-row look, a track-coloured wash and a red bar at the left. The
+   wash is a gradient over the row's own background, so the player's red wash
+   stays under it; the bar is drawn over the stripe's left edge. */
+#state-column .sc-ledger[aria-current="true"] {
+  position: relative;
+  background-image: linear-gradient(var(--sc-track), var(--sc-track));
+}
+#state-column .sc-ledger[aria-current="true"]::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: #E3000F;
+}
+#state-column .sc-ledger .stripe {
+  height: 24px;
+  border-radius: 2px;
+}
+#state-column .sc-ledger .nm {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#state-column .sc-ledger.gov .nm {
+  font-weight: 700;
+}
+#state-column .sc-ledger .st {
+  text-align: right;
+  padding-right: 4px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+#state-column .sc-ledger .rl {
+  position: relative;
+  height: 8px;
+  background: var(--sc-track);
+  border-radius: 2px;
+}
+#state-column .sc-ledger .rl.merged {
+  grid-column: span 2;
+  height: auto;
+  background: none;
+  display: flex;
+  justify-content: flex-start;
+}
+#state-column .sc-ledger .rl.none {
+  opacity: 0.5;
+}
+#state-column .sc-ledger .rl .fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  border-radius: 2px;
+  /* The pale light-mode fills (cool to friendly) sit under 3:1 on the track;
+     a darker inset edge restores the boundary. Transparent in dark mode. */
+  box-shadow: inset 0 0 0 1px var(--sc-rel-edge);
+}
+#state-column .sc-ledger .rl .tick {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 50%;
+  width: 1px;
+  background: var(--text-color);
+  opacity: 0.5;
+}
+#state-column .sc-ledger .wd {
+  font-size: 10px;
+  color: var(--sc-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#state-column .sc-ledger .gv {
+  text-align: center;
+  color: var(--sc-gold);
+}
+#state-column .sc-you {
+  font: 600 10px 'Jost', sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 3px 7px;
+  border-radius: 9px;
+  background: #E3000F;
+  color: #fff;
+}
+#state-column .sc-refuse {
+  font-size: 11px;
+  color: var(--sc-bad);
+  font-style: italic;
+}
+
+/* Panel kit */
+#state-column .sc-sub {
+  font-size: 10.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sc-muted);
+  margin: 9px 0 3px;
+}
+#state-column .sc-note {
+  font-size: 11px;
+  color: var(--sc-muted);
+  font-style: italic;
+  margin: 3px 0;
+}
+#state-column .sc-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  min-height: var(--sc-row);
+}
+#state-column .sc-row .lbl {
+  flex: 0 0 38%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+#state-column .sc-row .word {
+  flex: 1;
+  text-align: right;
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+#state-column .sc-row .val {
+  flex: 1;
+  text-align: right;
+  white-space: nowrap;
+}
+#state-column .sc-stack {
+  display: flex;
+  height: 16px;
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 2px 0 4px;
+}
+#state-column .sc-stack > span {
+  height: 100%;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 16px;
+}
+#state-column .sc-stack.thin {
+  height: 7px;
+}
+#state-column .sc-sw {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  flex: 0 0 9px;
+}
+#state-column .sc-pips {
+  display: inline-flex;
+  gap: 2px;
+}
+#state-column .sc-pips i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid var(--sc-muted);
+  box-sizing: border-box;
+}
+#state-column .sc-pips i.on {
+  background: var(--text-color);
+  border-color: var(--text-color);
+}
+#state-column .sc-pips.dissent i.on {
+  background: #d9542b;
+  border-color: #d9542b;
+}
+#state-column .sc-pips.danger i {
+  width: 11px;
+  height: 11px;
+}
+#state-column .sc-pips.danger i.on {
+  background: var(--sc-bad);
+  border-color: var(--sc-bad);
+}
+#state-column .sc-pips i.mark {
+  outline: 2px solid var(--sc-bad);
+  outline-offset: 1px;
+}
+#state-column .sc-bar {
+  position: relative;
+  flex: 1 1 30%;
+  height: 8px;
+  background: var(--sc-track);
+  border-radius: 4px;
+}
+#state-column .sc-bar .fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 4px;
+}
+#state-column .sc-tick {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 1px;
+  background: var(--sc-muted);
+}
+/* SPD tab */
+#state-column .sc-tokens {
+  display: inline-flex;
+  gap: 2px;
+}
+#state-column .sc-tokens i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--sc-muted);
+  box-sizing: border-box;
+}
+#state-column .sc-tokens i.on {
+  background: var(--sc-gold);
+  border-color: var(--sc-gold);
+}
+/* The resources label takes the sub-heading type (.sc-sub) inside its row, so
+   it drops the sub-heading's own margins. */
+#state-column .sc-row .lbl.sc-sub {
+  margin: 0;
+}
+/* end SPD tab */
+
+/* State tab: the economic readout, one row per figure, two figures to a
+   line so the tab, with the chart and the coalition dissent block, fits a
+   laptop's sidebar. */
+#state-column .sc-figs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+}
+#state-column .sc-figs .sc-row .lbl {
+  flex: 1 1 auto;
+}
+#state-column .sc-figs .sc-row .val {
+  flex: 0 0 auto;
+}
+#state-column .sc-fig .val b {
+  font-weight: 600;
+}
+/* The chart's line colours, one token per series, for both themes: amber,
+   blue and magenta (from the Okabe-Ito set), each lifted on the dark page.
+   The legend beneath repeats them, so colour is never the only cue. */
+body {
+  --sc-ec-infl: #b45f06;
+  --sc-ec-growth: #0072b2;
+  --sc-ec-unemp: #a8327f;
+}
+body.dark-mode {
+  --sc-ec-infl: #e8b93a;
+  --sc-ec-growth: #56b4e9;
+  --sc-ec-unemp: #e58ac0;
+}
+#state-column .sc-econ-chart {
+  margin-top: var(--sc-group-gap);
+}
+#state-column .sc-econ-svg {
+  display: block;
+}
+#state-column .sc-econ-svg .sc-grid,
+#state-column .sc-econ-svg .sc-zero {
+  stroke: var(--sc-muted);
+  stroke-width: 0.6;
+  stroke-dasharray: 2 2;
+}
+#state-column .sc-econ-svg .sc-zero {
+  stroke: var(--text-color);
+  stroke-width: 0.8;
+  stroke-dasharray: none;
+  opacity: 0.7;
+}
+#state-column .sc-econ-svg .sc-ax {
+  font: 500 8.5px 'Jost', sans-serif;
+  fill: var(--sc-muted);
+}
+#state-column .sc-econ-svg .sc-ln {
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+#state-column .sc-econ-svg .sc-ln.infl { stroke: var(--sc-ec-infl); }
+#state-column .sc-econ-svg .sc-ln.growth { stroke: var(--sc-ec-growth); }
+#state-column .sc-econ-svg .sc-ln.unemp { stroke: var(--sc-ec-unemp); }
+#state-column .sc-econ-svg .sc-dt.infl { fill: var(--sc-ec-infl); }
+#state-column .sc-econ-svg .sc-dt.growth { fill: var(--sc-ec-growth); }
+#state-column .sc-econ-svg .sc-dt.unemp { fill: var(--sc-ec-unemp); }
+#state-column .sc-econ-svg .sc-yr {
+  stroke: var(--sc-line);
+  stroke-width: 0.6;
+}
+#state-column .sc-econ-svg .sc-key {
+  fill: var(--sc-muted);
+}
+/* end State tab */
+
+/* Coalition dissent. One block per partner closes the Party and State tabs
+   (view.js, coalitionBlocks), set off from what is above by a group gap. The
+   block is a button that opens the Coalition dissent entry: one row (the label
+   in the sub-heading type, a track with one segment per step to the vote, the
+   band word in its severity colour with the month's change), then the
+   sentence, then two quiet notes, as much of that as the tab has room for
+   (view.js, pickDetail). The severity colours are the dissent bands' tokens
+   (--sc-dis-*): calm grey, uneasy amber, strained red, a vote dark red; a
+   blocked vote goes quiet. */
+#state-column .sc-coalition {
+  margin-top: var(--sc-group-gap);
+}
+#state-column .sc-cd {
+  --cd-sev: var(--sc-dis-very-low);
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 1px 3px 2px;
+  font: inherit;
+  line-height: 15px;
+  text-align: left;
+  color: var(--text-color);
+  background: none;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
+#state-column .sc-cd + .sc-cd {
+  margin-top: 2px;
+}
+#state-column .sc-cd:hover,
+#state-column .sc-cd:focus-visible {
+  background: var(--sc-track);
+}
+#state-column .sc-cd.band-uneasy {
+  --cd-sev: var(--sc-dis-medium);
+}
+#state-column .sc-cd.band-strained {
+  --cd-sev: var(--sc-dis-high);
+}
+#state-column .sc-cd.band-vote {
+  --cd-sev: var(--sc-dis-very-high);
+}
+#state-column .sc-cd.blocked {
+  --cd-sev: var(--sc-muted);
+}
+#state-column .sc-cd > span {
+  display: block;
+}
+#state-column .sc-cd .cd-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 16px;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+#state-column .sc-cd .cd-name {
+  flex: 0 0 auto;
+  font-weight: 500;
+  color: var(--sc-muted);
+}
+#state-column .sc-cd .cd-band {
+  flex: 0 0 auto;
+  min-width: 66px;
+  text-align: right;
+  font-weight: 600;
+  color: var(--cd-sev);
+}
+#state-column .sc-cd .cd-track {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  gap: 2px;
+}
+#state-column .sc-cd .cd-track i {
+  flex: 1 1 0;
+  box-sizing: border-box;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--sc-track);
+  box-shadow: inset 0 0 0 1px var(--sc-line);
+  font-style: normal;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--sc-muted);
+}
+#state-column .sc-cd .cd-track i.on {
+  background: var(--cd-sev);
+  box-shadow: none;
+  color: var(--sc-bar-on);
+}
+#state-column .sc-cd .cd-say {
+  margin-top: 3px;
+  font-size: 11.5px;
+}
+/* The badge is 16px tall, a line is 15: its vertical margins give the extra
+   back, so the sentence takes one line of height with it. */
+#state-column .sc-cd .cd-say .sc-badge {
+  vertical-align: -3px;
+  margin: -3px 3px -3px 0;
+}
+#state-column .sc-cd .cd-note {
+  margin-top: 2px;
+  font-size: 11px;
+  line-height: 14px;
+  color: var(--sc-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* end coalition dissent */
+
+/* A row on the open tab whose figure changed since the last render
+   flashes the accent colour for 600ms. No motion for people who ask for
+   none; the delta marker still says it. */
+body {
+  --sc-flash: rgba(227, 0, 15, 0.2);
+}
+body.dark-mode {
+  --sc-flash: rgba(255, 90, 100, 0.32);
+}
+@keyframes sc-flash {
+  from {
+    background-color: var(--sc-flash);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  #state-column .sc-flash {
+    border-radius: 3px;
+    animation: sc-flash 600ms ease-out;
+  }
+}
+/* end changed row */
+
+/* Factions as twin bars (strength, dissent) */
+/* Dissent fills, one per band of dissent.qdisplay.dry: grey, amber, red, dark
+   red. Each clears 3:1 against the track (light #ddd, dark #3e3e3e) by fill
+   alone, so no edge is needed. Dark mode swaps the dark red for a lighter
+   crimson, since a dark red would vanish on the dark track. */
+body {
+  --sc-dis-very-low: #767676;
+  --sc-dis-low: #767676;
+  --sc-dis-medium: #a86f00;
+  --sc-dis-high: #d0341f;
+  --sc-dis-very-high: #8f1410;
+}
+body.dark-mode {
+  --sc-dis-very-low: #9a9a9a;
+  --sc-dis-low: #9a9a9a;
+  --sc-dis-medium: #e8b93a;
+  --sc-dis-high: #ff8a5c;
+  --sc-dis-very-high: #f54a5e;
+}
+/* name | strength bar | dissent bar. Both bar columns share the width, and
+   each bar cell holds its track plus a fixed cell for the change arrow, so
+   tracks line up across rows. */
+#state-column .sc-frows {
+  margin-top: var(--sc-group-gap);
+}
+#state-column .sc-frow {
+  display: grid;
+  grid-template-columns: 104px 1fr 1fr;
+  column-gap: 8px;
+  align-items: center;
+  min-height: var(--sc-row);
+}
+#state-column .sc-frow .lbl {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#state-column .sc-frow .fbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+#state-column .sc-frow .trk {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: var(--sc-bar-h);
+  background: var(--sc-track);
+  border-radius: calc(var(--sc-bar-h) / 2);
+}
+#state-column .sc-frow .fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  border-radius: calc(var(--sc-bar-h) / 2);
+}
+/* The disunity tick: a 1px line with a page-coloured halo so it shows over
+   any fill, inside a wider box so the title is easy to hover. */
+#state-column .sc-frow .tick {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 7px;
+  margin-left: -3px;
+}
+#state-column .sc-frow .tick::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 3px;
+  width: 1px;
+  background: var(--text-color);
+  box-shadow: 0 0 0 1px var(--content-bg-color);
+}
+#state-column .sc-frow .fd {
+  flex: 0 0 18px;
+  white-space: nowrap;
+}
+#state-column .sc-frow .fd .sc-delta {
+  margin-left: 0;
+}
+/* The table's header row takes the panel's small-caps sub-heading type
+   (.sc-sub) and the Defense headings' line height, and the rhythm's gap
+   above its first row. */
+#state-column .sc-frow.head {
+  min-height: 0;
+  margin: 0 0 var(--sc-head-gap);
+  line-height: var(--sc-head-h);
+}
+
+/* Defense tab: an index of button rows. Each opens its entry in the depth
+   column. A row has two lines on a grid: the symbol in a fixed 30px cell
+   spanning both (so names line up whether a row carries a period symbol, up
+   to 30px wide, or the plain swatch), then the name, status word and chevron
+   on the first line and the size bar under the name on the second. The row
+   is --sc-row-2 tall: sixteen pixels of text and --sc-bar-h of bar. */
+body {
+  --sc-bar-on: #fff;
+}
+body.dark-mode {
+  --sc-bar-on: #111;
+}
+#state-column .sc-fsym {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+#state-column .sc-fsym img {
+  height: 20px;
+  max-width: 30px;
+  object-fit: contain;
+}
+#state-column .sc-drow {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto 8px;
+  grid-template-rows: 16px var(--sc-bar-h);
+  column-gap: 6px;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--sc-row-2);
+  margin: 0;
+  padding: 0 2px;
+  font: inherit;
+  line-height: 16px;
+  text-align: left;
+  color: var(--text-color);
+  background: none;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
+#state-column .sc-drow:hover,
+#state-column .sc-drow:focus-visible {
+  background: var(--sc-track);
+}
+#state-column .sc-drow[aria-current="true"] {
+  background: var(--sc-track);
+  box-shadow: inset 2px 0 0 #E3000F;
+}
+#state-column .sc-drow .ico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+/* The group headings take the sub-heading type at the same line height as the
+   Party table's header row (--sc-head-h); the rhythm's gaps set them off. */
+#state-column .sc-body .sc-sub.sc-dgroup {
+  margin: 0 0 var(--sc-head-gap);
+  line-height: var(--sc-head-h);
+}
+#state-column .sc-body .sc-drow + .sc-sub.sc-dgroup {
+  margin-top: var(--sc-group-gap);
+}
+#state-column .sc-drow .nm {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#state-column .sc-drow .st {
+  grid-column: 3;
+  grid-row: 1;
+  font-size: 10.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+#state-column .sc-drow .chev {
+  grid-column: 4;
+  grid-row: 1;
+  text-align: center;
+  color: var(--sc-muted);
+}
+/* Size bar: it spans the row from the name's left edge, so every track has
+   the same length and the bars compare down the list. The fill's length is a
+   square-root fudge (Model.sizeFraction); its number is the truth. The
+   number sits inside the fill when the fill is at least half the track
+   (.in, right-aligned), else just after it. */
+#state-column .sc-drow .sz {
+  grid-column: 2 / 5;
+  grid-row: 2;
+  position: relative;
+  min-width: 0;
+  height: var(--sc-bar-h);
+  border-radius: 2px;
+  background: var(--sc-track);
+}
+#state-column .sc-drow .sz-f {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  min-width: 2px;
+  border-radius: 2px;
+}
+#state-column .sc-drow .sz-n {
+  position: absolute;
+  top: 0;
+  line-height: var(--sc-bar-h);
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--text-color);
+}
+#state-column .sc-drow .sz-n.in {
+  color: var(--sc-bar-on);
+}
+#state-column .sc-drow .sz-n .sc-delta {
+  margin-left: 2px;
+  vertical-align: 0;
+}
+#state-column .sc-drow .sz-n.in .sc-delta {
+  color: inherit;
+}

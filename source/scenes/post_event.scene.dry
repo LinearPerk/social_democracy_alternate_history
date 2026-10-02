@@ -486,8 +486,6 @@ if (typeof window !== "undefined" && window.generateBar) {
 !}
 go-to: events_choice if has_event = 1; main if has_event = 0 and (difficulty >= 0 or hand_size == 3); main.main_easy if has_event = 0 and (difficulty < 0 or hand_size == 4)
 
-= [+ month : month +] [+ year +]
-
 @events_choice
 
 - #event
